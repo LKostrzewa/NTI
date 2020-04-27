@@ -18,7 +18,7 @@ public class Post {
     @Lob
     private byte[] lob;
     private String description;
-    private LocalDateTime date;
+    private LocalDateTime addDate;
     @ManyToOne
     private Account account;
     //location to potem bajerka
