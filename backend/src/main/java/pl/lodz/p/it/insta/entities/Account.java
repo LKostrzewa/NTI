@@ -20,7 +20,7 @@ public class Account {
     private String password;
     private String email;
     private boolean isActive;
-    //sugestia
-    @OneToMany(mappedBy = "account")
-    private Collection<Post> posts = new ArrayList<>();
+    // wywalalo mi tutaj cykliczna zaleznosc ....
+//    @OneToMany(mappedBy = "account")
+//    private Collection<Post> posts = new ArrayList<>();
 }
