@@ -7,46 +7,37 @@ class PostsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            resources: []
+            posts: []
         };
     }
 
     componentDidMount = () => {
-        // pobranie resource
-        let resourcesList = null;
+        let postsList = null;
 
         fetch(" http://localhost:8080/posts/").then((response) => {
             return response.json()
         })
             .then((data) => {
-                resourcesList = data;
-
-
+                postsList = data;
             }).finally(() => {
             this.setState({
-                resources: resourcesList
+                posts: postsList
 
             })
         });
     };
 
     render() {
-        const resources = this.state.resources;
-
-        // console.log("resources" + JSON.stringify(resources));
-
-
+        const posts = this.state.posts;
         return (
             <div class="centered">
                 <h2>Posty: </h2>
 
-                {resources.map((c, index) => <Post id={c.id} addDate={c.addDate} lob={c.lob}
-                                                   description={c.description}/>)}
+                {posts.map((c, index) => <Post id={c.id} addDate={c.addDate} lob={c.lob}
+                                                   description={c.description} login={c.account.login}/>)}
 
             </div>
         )
-
-
     }
 }
 

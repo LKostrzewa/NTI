@@ -11,7 +11,7 @@ import java.util.Collection;
 @Entity
 @Getter
 @Setter
-public class Post {
+public class Post implements Comparable<Post>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,4 +26,9 @@ public class Post {
     //sugestia
     @OneToMany (mappedBy = "post")
     private Collection<Comment> comments = new ArrayList<>();
+
+    @Override
+    public int compareTo(Post post) {
+        return post.addDate.compareTo(this.addDate);
+    }
 }

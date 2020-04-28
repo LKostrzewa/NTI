@@ -3,30 +3,28 @@ import './css/Post.css'
 class Post extends Component {
     constructor(props) {
         super(props);
+        var date = props.addDate[0]+"-"+props.addDate[1]+"-"+props.addDate[2];
         this.state = {
             id: props.id,
-            addDate: props.addDate,
+            login: props.login,
+            addDate: date,
             lob: props.lob,
             description: props.description
-
         }
-        var date = new Date(props.addDate);
-
-        console.log("props " + props.addDate );
-        console.log("resources" + date );
-
     }
     render() {
-        const id= this.state.id;
+        const login= this.state.login;
         const addDate= this.state.addDate;
         const lob= this.state.lob;
         const description= this.state.description;
-        return <article className="Post" ref="Post">
+
+        console.log("date: "+addDate);
+
+        return<article className="Post" ref="Post">
             <header>
                 <div className="Post-user">
                     <div className="Post-user-nickname">
-                        {id}, {addDate}
-
+                        {login}, {addDate}
                     </div>
                 </div>
             </header>

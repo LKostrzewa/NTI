@@ -6,6 +6,7 @@ import pl.lodz.p.it.insta.entities.Post;
 import pl.lodz.p.it.insta.repositories.PostRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -18,6 +19,6 @@ public class PostService {
     }
 
     public List<Post> getAll(){
-        return postRepository.findAll();
+        return postRepository.findAll().stream().sorted().collect(Collectors.toList());
     }
 }
