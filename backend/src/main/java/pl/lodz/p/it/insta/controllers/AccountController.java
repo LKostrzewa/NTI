@@ -8,7 +8,7 @@ import pl.lodz.p.it.insta.services.AccountService;
 public class AccountController {
     //tylko add i activate ?
 
-    private AccountService accountService;
+    private final AccountService accountService;
 
     @Autowired
     public AccountController(AccountService accountService) {

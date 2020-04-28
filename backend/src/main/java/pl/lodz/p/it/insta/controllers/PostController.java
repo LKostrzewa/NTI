@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("posts")
 public class PostController {
 
-    private PostService postService;
+    private final PostService postService;
 
     @Autowired
     public PostController(PostService postService) {
@@ -21,8 +21,8 @@ public class PostController {
     }
 
     // http://localhost:8080/posts/
-    @GetMapping(produces="application/json")
-    public List<Post> getAll(){
+    @GetMapping(produces = "application/json")
+    public List<Post> getAll() {
         return postService.getAll();
     }
 }

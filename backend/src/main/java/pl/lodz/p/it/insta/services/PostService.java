@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 @Service
 public class PostService {
 
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
     @Autowired
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
 
-    public List<Post> getAll(){
+    public List<Post> getAll() {
         return postRepository.findAll().stream().sorted().collect(Collectors.toList());
     }
 }
