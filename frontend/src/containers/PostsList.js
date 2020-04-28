@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-
-
+import './css/PostList.css'
+import '../components/Post'
+import Post from "../components/Post";
 class PostsList extends Component {
     constructor(props) {
         super(props);
@@ -13,6 +14,7 @@ class PostsList extends Component {
     componentDidMount = () => {
         // pobranie resource
         let resourcesList = null;
+
         fetch(" http://localhost:8080/posts/").then((response) => {
             return response.json()
         })
@@ -22,30 +24,29 @@ class PostsList extends Component {
 
             }).finally(() => {
             this.setState({
-                resources: resourcesList,
+                resources: resourcesList
+
             })
         });
     };
 
     render() {
         const resources = this.state.resources;
-        console.log("resources" + JSON.stringify(resources));
+
+        // console.log("resources" + JSON.stringify(resources));
+
+
         return (
-            <div>
+            <div class="centered">
                 <h2>Posty: </h2>
-                {resources.map((c,index)=> (
-                        <div>
 
-                            <h1>{index}:  Uzytkownik: {c.ID}  Data: {c.addDate} </h1>
-                            <h1>{c.lob}></h1>
-                            <h1>{c.description}</h1>
-                        </div>
-                    )
-                )}
+                {resources.map((c, index) => <Post id={c.id} addDate={c.addDate} lob={c.lob}
+                                                   description={c.description}/>)}
+
             </div>
+        )
 
 
-        );
     }
 }
 
