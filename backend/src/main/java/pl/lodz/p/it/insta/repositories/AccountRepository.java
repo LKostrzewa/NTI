@@ -6,9 +6,9 @@ import pl.lodz.p.it.insta.entities.Account;
 import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
-    Optional<Account> findByLogin(String login);
+    Optional<Account> findByUsername(String username);
 
-    Boolean existsByLogin(String login);
+    Boolean existsByUsername(String login);
 
     Boolean existsByEmail(String email);
 }
