@@ -29,3 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
+.gitignore
+backend/src/main/java/pl/lodz/p/it/insta/security/
