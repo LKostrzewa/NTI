@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import './css/PostList.css'
 import {Post} from "../components/Post";
+import {PostComment} from "../components/PostComment";
 
-export class PostsList extends Component {
+export default class PostsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,13 +27,18 @@ export class PostsList extends Component {
     };
 
     render() {
-        const posts = this.state.posts;
+        var posts = this.state.posts.map(function (c,index) {
+            return(
+                <Post id={c.id} addDate={c.addDate} lob={c.lob}
+                      description={c.description} username={c.account.username} comments={c.comments}/>
+            );
+        });
+
+
         return (
             <div className="centered">
                 <h2>Posty: </h2>
-
-                {posts.map((c, index) => <Post id={c.id} addDate={c.addDate} lob={c.lob}
-                                               description={c.description} login={c.account.login}/>)}
+                {posts}
             </div>
         )
     }

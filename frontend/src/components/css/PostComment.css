@@ -1,0 +1,21 @@
+.PostComment {
+  border: 1px solid #e6e6e6;
+}
+.TopicPostComment {
+  display: flex;
+  padding: 3px;
+  align-items: center;
+  margin-left: 12px;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+.ContentPostComment {
+  display: flex;
+  padding: 2px;
+  align-items: center;
+  margin-left: 12px;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 13px;
+
+}

@@ -1,9 +1,12 @@
 package pl.lodz.p.it.insta.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 @Entity
@@ -24,9 +27,10 @@ public class Account {
     private String password;
     private String email;
     private boolean isActive;
-    // wywalalo mi tutaj cykliczna zaleznosc ....
-//    @OneToMany(mappedBy = "account")
-//    private Collection<Post> posts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "account")
+    @JsonIgnore
+    private Collection<Post> posts = new ArrayList<>();
 
     public Account() {
     }

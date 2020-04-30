@@ -23,11 +23,9 @@
   display: block;
   width: 100%;
 }
-.Post-caption {
-  padding: 16px 16px;
+.Post-description {
+  padding: 16px;
+    font-family: 'PT Sans', sans-serif;
 }
-.Post-caption strong {
-  font-family: 'PT Sans', sans-serif;
-  font-weight: bold;
-}
+
 

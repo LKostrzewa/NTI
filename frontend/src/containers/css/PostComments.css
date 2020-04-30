@@ -1,0 +1,14 @@
+.TopicPostComments {
+    display: flex;
+    align-items: center;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 13px;
+    padding: 16px;
+
+}
+.Button{
+    margin-left: 12px;
+
+}
+
+
