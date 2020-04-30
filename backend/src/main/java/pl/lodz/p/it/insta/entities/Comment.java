@@ -1,5 +1,7 @@
 package pl.lodz.p.it.insta.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,9 +16,10 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    private LocalDateTime date;
+    private LocalDateTime addDate;
     @ManyToOne
     private Account account;
     @ManyToOne
+    @JsonIgnore
     private Post post;
 }

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './css/Post.css'
+import {PostComments} from "../containers/PostComments";
 
 export class Post extends Component {
     constructor(props) {
@@ -7,26 +8,28 @@ export class Post extends Component {
         var date = props.addDate[0] + "-" + props.addDate[1] + "-" + props.addDate[2];
         this.state = {
             id: props.id,
-            login: props.login,
+            username: props.username,
             addDate: date,
             lob: props.lob,
-            description: props.description
+            description: props.description,
+            comments: props.comments
         }
     }
 
     render() {
-        const login = this.state.login;
+        const username = this.state.username;
         const addDate = this.state.addDate;
         const lob = this.state.lob;
         const description = this.state.description;
+        const comments = this.state.comments;
 
-        console.log("date: " + addDate);
+
 
         return <article className="Post" ref="Post">
             <header>
                 <div className="Post-user">
                     <div className="Post-user-nickname">
-                        {login}, {addDate}
+                        {username}, {addDate}
                     </div>
                 </div>
             </header>
@@ -37,6 +40,9 @@ export class Post extends Component {
             </div>
             <div className="Post-caption">
                 <strong>{description}</strong>
+            </div>
+            <div>
+               <PostComments comments={comments}/>
             </div>
         </article>;
     }

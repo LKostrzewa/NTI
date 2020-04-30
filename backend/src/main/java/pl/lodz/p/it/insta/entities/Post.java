@@ -1,5 +1,6 @@
 package pl.lodz.p.it.insta.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
