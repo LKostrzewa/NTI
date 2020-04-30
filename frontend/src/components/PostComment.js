@@ -21,11 +21,11 @@ export class PostComment extends Component {
 
         return <article className="PostComment">
                 <header>
-                    <div className="Topic">
+                    <div className="TopicPostComment">
                         {username}, {addDate}
                     </div>
                 </header>
-                <div className="Content">
+                <div className="ContentPostComment">
                     <label >{content}</label>
                 </div>
             </article>;

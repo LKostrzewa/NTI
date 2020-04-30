@@ -39,15 +39,15 @@ export class PostComments extends Component {
             <div>
                 {showComments == false ?
                     <div>
-                        <div className="Topic">
+                        <div className="TopicPostComments">
                             <label>Liczba komentarzy: {numberOfQuestion}</label>
-                            <button onClick={this.showComments}> Pokaż komentarze</button>
+                            <button className="Button" onClick={this.showComments}> Pokaż komentarze</button>
                         </div>
                     </div> :
                     <div>
-                        <div className="Topic">
+                        <div className="TopicPostComments">
                             <label>Liczba komentarzy: {numberOfQuestion}</label>
-                            <button onClick={this.hideComments}> Ukryj komentarze</button>
+                            <button className="Button" onClick={this.hideComments}> Ukryj komentarze</button>
                         </div>
                         <div>
                             {comments}

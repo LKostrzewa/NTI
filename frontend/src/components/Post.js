@@ -38,8 +38,8 @@ export class Post extends Component {
                     <img src={"data:image/png;base64," + lob} className="image"/>
                 </div>
             </div>
-            <div className="Post-caption">
-                <strong>{description}</strong>
+            <div className="Post-description">
+                <label>{description}</label>
             </div>
             <div>
                <PostComments comments={comments}/>
