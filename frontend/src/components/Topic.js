@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import './css/Topic.css'
 
 export class Topic extends Component{
     constructor(props) {
@@ -17,14 +18,12 @@ export class Topic extends Component{
         return <article className="Topic" ref="Topic">
                 <header>
                 <div className="Topic-user">
-                    <div className="Forum-user-nickname">
-                        {username}
-                    </div>
+                    {username}
                 </div>
+                </header>
                 <div className="Topic-title">
                     {title}
                 </div>
-            </header>
             </article>;
     }
 }

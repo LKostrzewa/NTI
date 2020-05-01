@@ -12,3 +12,4 @@ INSERT INTO comment (content, add_date, account_id, post_id) VALUES ('Komentarz 
 
 INSERT INTO topic (title, account_id) VALUES ('Halko co jest 5', 1);
 INSERT INTO topic (title, account_id) VALUES ('Co to jest za forum jak tu nikogo nie ma kurcze blade', 1);
+INSERT INTO topic (title, account_id) VALUES (' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mauris orci, pharetra vel ante eget, sodales ornare diam. Vivamus dictum felis ut diam porttitor, eget pharetra lectus mattis. Nullam fringilla libero scelerisque ullamcorper lacinia. Mauris efficitur urna odio, nec eleifend lorem mollis in. Vivamus et metus vulputate neque auctor sodales. Donec ante enim, hendrerit eget quam eget, luctus iaculis dui. Nullam vitae mattis ipsum.', 1);
