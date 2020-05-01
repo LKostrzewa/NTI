@@ -24,7 +24,6 @@ public class Post implements Comparable<Post>{
     private Account account;
     //location to potem bajerka
 
-    //sugestia
     @OneToMany (mappedBy = "post")
     private Collection<Comment> comments = new ArrayList<>();
 
