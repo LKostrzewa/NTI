@@ -74,6 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/posts/**").permitAll()
                 .antMatchers("/addCommentToPost/**").permitAll()
+                .antMatchers("/forum/**").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

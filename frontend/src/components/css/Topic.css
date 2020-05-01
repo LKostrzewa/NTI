@@ -1,0 +1,15 @@
+.Topic {
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    margin-bottom: 20px;
+    margin-right: 25%;
+}
+
+.Topic-user {
+    font-weight: bold;
+}
+
+.Topic-title {
+    font-size: 14px;
+}
