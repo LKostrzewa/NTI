@@ -10,7 +10,7 @@ import pl.lodz.p.it.insta.services.PostService;
 import java.util.List;
 
 @RestController
-@RequestMapping("posts")
+@RequestMapping("/posts")
 public class PostController {
 
     private final PostService postService;
