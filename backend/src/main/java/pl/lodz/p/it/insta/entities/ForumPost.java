@@ -1,5 +1,6 @@
 package pl.lodz.p.it.insta.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,6 @@ public class ForumPost {
     @ManyToOne
     private Account account;
     @ManyToOne
+    @JsonIgnore
     private Topic topic;
 }

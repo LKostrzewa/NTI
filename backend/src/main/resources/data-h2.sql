@@ -10,3 +10,5 @@ INSERT INTO comment (content, add_date, account_id, post_id) VALUES ('Ehh kiedy≈
 INSERT INTO comment (content, add_date, account_id, post_id) VALUES ('Komentarz 2 ', {ts '2015-04-17 18:47:52.69'},1,2);
 INSERT INTO comment (content, add_date, account_id, post_id) VALUES ('Komentarz 3 ', {ts '2015-03-17 18:47:52.69'},1,2);
 
+INSERT INTO topic (title, account_id) VALUES ('Halko co jest 5', 1);
+INSERT INTO topic (title, account_id) VALUES ('Co to jest za forum jak tu nikogo nie ma kurcze blade', 1);
