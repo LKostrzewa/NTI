@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import './App.css';
 import PostsList from "./containers/PostsList"
+import Forum from "./containers/Forum";
 
 function App() {
     return (
@@ -15,6 +16,9 @@ function App() {
                         <li>
                             <Link to="/containers/PostsList">Posts List</Link>
                         </li>
+                        <li>
+                            <Link to="/containers/Forum"> Forum </Link>
+                        </li>
                     </ul>
                 </nav>
 
@@ -23,6 +27,9 @@ function App() {
                 <Switch>
                     <Route path="/containers/PostsList">
                         <PostsList/>
+                    </Route>
+                    <Route path="/containers/Forum">
+                        <Forum/>
                     </Route>
                     <Route path="/">
                         <Home/>

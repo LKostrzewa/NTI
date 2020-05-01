@@ -5,6 +5,7 @@ import {PostComment} from "../components/PostComment";
 
 export default class PostsList extends Component {
     constructor(props) {
+        console.log("Jadom");
         super(props);
         this.state = {
             posts: []
