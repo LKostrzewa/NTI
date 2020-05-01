@@ -40,18 +40,17 @@ export class PostComments extends Component {
         const newComment = this.state.newComment;
         const postId = this.state.postId;
         const newCommentJson = {
-            "content": newComment,
-            "post": postId
+            "postId": postId,
+            "content": newComment
         };
-        const response = fetch('http://localhost:8080/addCommentToPost/', {
+        const response = fetch('http://localhost:8080/posts/addCommentToPost/', {
             dataType: "json",
             method: 'POST',
             body: JSON.stringify(newCommentJson),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
-        });
-            // .finally(() =>  window.location.reload());
+        }).finally(() =>  window.location.reload());
         return false;
     };
 
@@ -82,7 +81,7 @@ export class PostComments extends Component {
                         <div>
                             {comments}
                         </div>
-                        <div>
+                        <div className="TopicAddComment">
                             <input type="text" value={newComment} onChange={this.handleNewComment}/>
                             <button onClick={this.saveNewComment}>Dodaj komentarz</button>
                         </div>
