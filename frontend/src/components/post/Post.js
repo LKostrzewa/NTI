@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import './css/Post.css'
-import {PostComments} from "../containers/PostComments";
+import './Post.css'
+import {PostComments} from "../../containers/postComments/PostComments";
 
 export class Post extends Component {
     constructor(props) {
@@ -23,8 +23,6 @@ export class Post extends Component {
         const description = this.state.description;
         const comments = this.state.comments;
 
-
-
         return <article className="Post" ref="Post">
             <header>
                 <div className="Post-user">
@@ -42,7 +40,7 @@ export class Post extends Component {
                 <label>{description}</label>
             </div>
             <div>
-               <PostComments comments={comments}/>
+                <PostComments comments={comments}/>
             </div>
         </article>;
     }
