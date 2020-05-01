@@ -7,7 +7,7 @@ export class Post extends Component {
         super(props);
         var date = props.addDate[0] + "-" + props.addDate[1] + "-" + props.addDate[2];
         this.state = {
-            id: props.id,
+            postId: props.postId,
             username: props.username,
             addDate: date,
             lob: props.lob,
@@ -17,6 +17,7 @@ export class Post extends Component {
     }
 
     render() {
+        const postId = this.state.postId;
         const username = this.state.username;
         const addDate = this.state.addDate;
         const lob = this.state.lob;
@@ -42,7 +43,7 @@ export class Post extends Component {
                 <label>{description}</label>
             </div>
             <div>
-               <PostComments comments={comments}/>
+               <PostComments postId={postId} comments={comments}/>
             </div>
         </article>;
     }

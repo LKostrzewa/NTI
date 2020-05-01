@@ -14,7 +14,7 @@ export default class PostsList extends Component {
     componentDidMount = () => {
         let postsList = null;
 
-        fetch(" http://localhost:8080/posts/").then((response) => {
+        fetch("http://localhost:8080/posts/").then((response) => {
             return response.json()
         })
             .then((data) => {
@@ -29,7 +29,7 @@ export default class PostsList extends Component {
     render() {
         var posts = this.state.posts.map(function (c,index) {
             return(
-                <Post id={c.id} addDate={c.addDate} lob={c.lob}
+                <Post postId={c.id} addDate={c.addDate} lob={c.lob}
                       description={c.description} username={c.account.username} comments={c.comments}/>
             );
         });
