@@ -4,6 +4,15 @@ import './App.css';
 import PostList from "./containers/postList/PostList"
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentUser: null,
+            isAuthenticated: false,
+            isLoading: false
+        }
+    }
+
     render() {
         return (
             <Router>
