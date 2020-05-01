@@ -5,7 +5,7 @@ import {PostComments} from "../../containers/postComments/PostComments";
 export class Post extends Component {
     constructor(props) {
         super(props);
-        var date = props.addDate[0] + "-" + props.addDate[1] + "-" + props.addDate[2];
+        const date = props.addDate[0] + "-" + props.addDate[1] + "-" + props.addDate[2];
         this.state = {
             id: props.id,
             username: props.username,

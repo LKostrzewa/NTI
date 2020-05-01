@@ -53,15 +53,21 @@ export function checkEmailAvailability(email) {
     });
 }
 
-
 export function getCurrentUser() {
     if (!localStorage.getItem(ACCESS_TOKEN)) {
         return Promise.reject("No access token set.");
     }
 
     return request({
-        url: API_BASE_URL + "/user/me",
+        url: API_BASE_URL + "/accounts/me",
         method: 'GET'
+    });
+}
+
+export function getPosts() {
+    return request({
+        url: API_BASE_URL + "/posts",
+        method: 'GET',
     });
 }
 
