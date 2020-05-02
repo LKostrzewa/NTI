@@ -14,6 +14,7 @@ public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 512)
     private String title;
     @ManyToOne
     private Account account;

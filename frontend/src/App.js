@@ -7,6 +7,7 @@ import {Success} from "./components/success/Success";
 import history from "./history";
 import {ACCESS_TOKEN} from "./utils/Constants";
 import {getCurrentUser} from "./utils/Requests";
+import Forum from "./containers/Forum";
 
 class App extends Component {
     constructor(props) {
@@ -87,6 +88,9 @@ class App extends Component {
                                 <Link to="/postList">Post list</Link>
                             </li>
                             <li>
+                               <Link to="/forum"> Forum </Link>
+                            </li>
+                            <li>
                                 <Link to="/login">Login</Link>
                             </li>
                         </ul>
@@ -97,6 +101,9 @@ class App extends Component {
                     <Switch>
                         <Route path="/postList">
                             <PostList/>
+                        </Route>
+                        <Route path="/forum">
+                            <Forum/>
                         </Route>
                         <Route path="/login"
                                render={(props) => <LoginForm onLogin={this.handleLogin} {...props} />}/>
