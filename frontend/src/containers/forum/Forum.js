@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Topic} from "../components/Topic";
+import {Topic} from "../../components/topic/Topic";
 
 export default class Forum extends Component {
     constructor(props) {

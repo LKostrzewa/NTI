@@ -7,7 +7,7 @@ import {Success} from "./components/success/Success";
 import history from "./history";
 import {ACCESS_TOKEN} from "./utils/Constants";
 import {getCurrentUser} from "./utils/Requests";
-import Forum from "./containers/Forum";
+import Forum from "./containers/forum/Forum";
 
 class App extends Component {
     constructor(props) {
