@@ -3,7 +3,7 @@ import {Link, Route, Router, Switch} from "react-router-dom";
 import './App.css';
 import PostList from "./containers/postList/PostList"
 import LoginForm from "./components/login/Login";
-import {Success} from "./components/success/Success";
+import Success from "./components/success/Success";
 import history from "./history";
 import {ACCESS_TOKEN} from "./utils/Constants";
 import {getCurrentUser} from "./utils/Requests";
