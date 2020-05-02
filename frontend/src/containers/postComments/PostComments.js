@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {PostComment} from "../components/PostComment";
-import './css/PostComments.css'
+import {PostComment} from "../../components/postComment/PostComment";
+import './PostComments.css'
 
 export class PostComments extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ export class PostComments extends Component {
         });
         return (
             <div>
-                {showComments == false ?
+                {showComments === false ?
                     <div>
                         <div className="TopicPostComments">
                             <label>Liczba komentarzy: {numberOfQuestion}</label>
@@ -56,7 +56,5 @@ export class PostComments extends Component {
                 }
             </div>
         )
-
-
     }
 }
