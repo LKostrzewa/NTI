@@ -1,5 +1,21 @@
-import React from "react";
+import React, {Component} from 'react';
 
-export const Success = (props) => {
-    return <h1>Siema @{props.currentUser.username}</h1>;
+export default class Success extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentUser: null
+        };
+    }
+
+    componentDidMount() {
+        this.setState({currentUser: this.props.currentUser})
+    }
+
+    render() {
+        if (this.state.currentUser) {
+            return <h1> Siema {this.state.currentUser.username}</h1>
+        }
+        else return <h1> Log in... </h1>
+    }
 }
