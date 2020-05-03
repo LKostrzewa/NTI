@@ -28,7 +28,7 @@ export default class PostList extends Component {
     render() {
         var posts = this.state.posts.map(function (c,index) {
             return(
-                <Post id={c.id} addDate={c.addDate} lob={c.lob}
+                <Post postId={c.id} addDate={c.addDate} lob={c.lob}
                       description={c.description} username={c.account.username} comments={c.comments}/>
             );
         });
