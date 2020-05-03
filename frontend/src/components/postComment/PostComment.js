@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import './css/PostComment.css'
+import './PostComment.css'
 
 export class PostComment extends Component {
     constructor(props) {
@@ -20,17 +20,14 @@ export class PostComment extends Component {
         const username = this.state.account.username;
 
         return <article className="PostComment">
-                <header>
-                    <div className="TopicPostComment">
-                        {username}, {addDate}
-                    </div>
-                </header>
-                <div className="ContentPostComment">
-                    <label >{content}</label>
+            <header>
+                <div className="TopicPostComment">
+                    {username}, {addDate}
                 </div>
-            </article>;
-
-
-
+            </header>
+            <div className="ContentPostComment">
+                <label>{content}</label>
+            </div>
+        </article>;
     }
 }

@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import './css/Post.css'
-import {PostComments} from "../containers/PostComments";
+import './Post.css'
+import {PostComments} from "../../containers/postComments/PostComments";
 
 export class Post extends Component {
     constructor(props) {
         super(props);
-        var date = props.addDate[0] + "-" + props.addDate[1] + "-" + props.addDate[2];
+        const date = props.addDate[0] + "-" + props.addDate[1] + "-" + props.addDate[2];
         this.state = {
             postId: props.postId,
             username: props.username,
@@ -23,8 +23,6 @@ export class Post extends Component {
         const lob = this.state.lob;
         const description = this.state.description;
         const comments = this.state.comments;
-
-
 
         return <article className="Post" ref="Post">
             <header>

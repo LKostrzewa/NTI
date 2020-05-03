@@ -1,4 +1,4 @@
-package pl.lodz.p.it.insta.security;
+package pl.lodz.p.it.insta.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pl.lodz.p.it.insta.entities.Account;
+import pl.lodz.p.it.insta.security.JwtTokenProvider;
 import pl.lodz.p.it.insta.security.payloads.ApiResponse;
 import pl.lodz.p.it.insta.security.payloads.JwtAuthenticationResponse;
 import pl.lodz.p.it.insta.security.payloads.LoginRequest;
@@ -24,7 +25,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
     private AuthenticationManager authenticationManager;
     private AccountService accountService;
@@ -90,7 +91,7 @@ public class AuthController {
         Account result = accountService.addAccount(account);
 
         URI location = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/api/users/{username}")
+                .fromCurrentContextPath().path("/users/{username}")
                 .buildAndExpand(result.getUsername()).toUri();
 
         return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
