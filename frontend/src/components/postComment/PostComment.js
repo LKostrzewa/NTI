@@ -4,7 +4,7 @@ import './PostComment.css'
 export class PostComment extends Component {
     constructor(props) {
         super(props);
-        var date = props.addDate[0] + "-" + props.addDate[1] + "-" + props.addDate[2];
+        const date = props.addDate.replace('T',' ');
         this.state = {
             id: props.id,
             content: props.content,
