@@ -8,6 +8,7 @@ import history from "./history";
 import {ACCESS_TOKEN} from "./utils/Constants";
 import {getCurrentUser} from "./utils/Requests";
 import Forum from "./containers/forum/Forum";
+import {notification} from "antd";
 
 class App extends Component {
     constructor(props) {
@@ -67,10 +68,10 @@ class App extends Component {
     }
 
     handleLogin() {
-        // notification.success({
-        //     message: 'Polling App',
-        //     description: "You're successfully logged in.",
-        // });
+        notification.success({
+            message: 'Polling App',
+            description: "You're successfully logged in.",
+        });
         this.loadCurrentUser();
         history.push('/success');
     }
@@ -88,7 +89,7 @@ class App extends Component {
                                 <Link to="/postList">Post list</Link>
                             </li>
                             <li>
-                               <Link to="/forum"> Forum </Link>
+                                <Link to="/forum"> Forum </Link>
                             </li>
                             <li>
                                 <Link to="/login">Login</Link>
