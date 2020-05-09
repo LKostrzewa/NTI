@@ -53,7 +53,7 @@ public class AuthController {
     }
 
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -69,15 +69,15 @@ public class AuthController {
         return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         if (accountService.existsByUsername(signUpRequest.getUsername())) {
-            return new ResponseEntity<>(new ApiResponse(false, "Username is already taken!"),
+            return new ResponseEntity<>(new ApiResponse(false, "Username is already taken"),
                     HttpStatus.BAD_REQUEST);
         }
 
         if (accountService.existsByEmail(signUpRequest.getEmail())) {
-            return new ResponseEntity<>(new ApiResponse(false, "Email address already in use!"),
+            return new ResponseEntity<>(new ApiResponse(false, "Email address already in use"),
                     HttpStatus.BAD_REQUEST);
         }
 

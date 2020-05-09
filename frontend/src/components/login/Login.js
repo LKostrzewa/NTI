@@ -15,9 +15,9 @@ const LoginForm = (props) => {
                 props.onLogin();
             }).catch(error => {
             if (error.status === 401) {
-                console.log("Your username or password is incorrect. Please try again!", values);
+                console.log("Your username or password is incorrect. Please try again.", values);
             } else {
-                console.log("Sorry! Something went wrong. Please try again!");
+                console.log("Something went wrong. Please try again.");
             }
         })
     }
@@ -26,9 +26,6 @@ const LoginForm = (props) => {
         <Form
             name="login_form"
             className="login-form"
-            initialValues={{
-                remember: true,
-            }}
             onFinish={onFinish}>
             <Form.Item
                 name="username"
@@ -60,7 +57,7 @@ const LoginForm = (props) => {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     Log in
                 </Button>
-                {/*Or <a href="">register now!</a>*/}
+                Don't have an account? <a href="../registration">Sign up</a>
             </Form.Item>
         </Form>
     );

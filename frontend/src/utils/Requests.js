@@ -25,17 +25,17 @@ const request = (options) => {
 
 export function login(loginRequest) {
     return request({
-        url: API_BASE_URL + "/auth/signin",
+        url: API_BASE_URL + "/auth/login",
         method: 'POST',
         body: JSON.stringify(loginRequest)
     });
 }
 
-export function signup(signupRequest) {
+export function register(registerRequest) {
     return request({
-        url: API_BASE_URL + "/auth/signup",
+        url: API_BASE_URL + "/auth/register",
         method: 'POST',
-        body: JSON.stringify(signupRequest)
+        body: JSON.stringify(registerRequest)
     });
 }
 

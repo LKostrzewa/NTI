@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import './Registration.css';
 import {Button, Form, Input, notification} from 'antd';
 import {register} from "../../utils/Requests";
+import history from "../../history";
 
 const formItemLayout = {
     labelCol: {
@@ -44,14 +45,14 @@ const RegistrationForm = () => {
         register(registrationRequest)
             .then(response => {
                 notification.success({
-                    message: 'Polling App',
-                    description: "Thank you! You're successfully registered. Please Login to continue!",
+                    message: 'App',
+                    description: "You've successfully registered. You may log in now."
                 });
-                this.props.history.push("/login");
+                history.push('/login');
             }).catch(error => {
             notification.error({
-                message: 'Polling App',
-                description: error.message || 'Sorry! Something went wrong. Please try again!'
+                message: 'App',
+                description: error.message || 'Sorry. Something went wrong. Please try again.'
             });
         });
     };
@@ -60,7 +61,7 @@ const RegistrationForm = () => {
         <Form
             {...formItemLayout}
             form={form}
-            name="register"
+            name="register-form"
             onFinish={onFinish}
             scrollToFirstError
         >
@@ -170,28 +171,6 @@ const RegistrationForm = () => {
                     <Input.Password/>
                 </Form.Item>
             </Form.Item>
-
-            {/*<Form.Item label="Captcha" extra="We must make sure that you are a human.">*/}
-            {/*    <Row gutter={8}>*/}
-            {/*        <Col span={12}>*/}
-            {/*            <Form.Item*/}
-            {/*                name="captcha"*/}
-            {/*                noStyle*/}
-            {/*                rules={[*/}
-            {/*                    {*/}
-            {/*                        required: true,*/}
-            {/*                        message: 'Please input the captcha you got',*/}
-            {/*                    },*/}
-            {/*                ]}*/}
-            {/*            >*/}
-            {/*                <Input/>*/}
-            {/*            </Form.Item>*/}
-            {/*        </Col>*/}
-            {/*        <Col span={12}>*/}
-            {/*            <Button>Get captcha</Button>*/}
-            {/*        </Col>*/}
-            {/*    </Row>*/}
-            {/*</Form.Item>*/}
 
             <Form.Item {...tailFormItemLayout}>
                 <Button type="primary" htmlType="submit">
