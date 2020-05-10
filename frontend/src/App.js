@@ -8,6 +8,8 @@ import history from "./history";
 import {ACCESS_TOKEN} from "./utils/Constants";
 import {getCurrentUser} from "./utils/Requests";
 import Forum from "./containers/forum/Forum";
+import {notification} from "antd";
+import RegistrationForm from "./components/registration/Registration";
 
 class App extends Component {
     constructor(props) {
@@ -21,11 +23,11 @@ class App extends Component {
         this.loadCurrentUser = this.loadCurrentUser.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
 
-        // notification.config({
-        //     placement: 'topRight',
-        //     top: 70,
-        //     duration: 3,
-        // });
+        notification.config({
+            placement: 'topRight',
+            top: 70,
+            duration: 3,
+        });
     }
 
     loadCurrentUser() {
@@ -59,18 +61,13 @@ class App extends Component {
         });
 
         history.push(redirectTo);
-
-        // notification[notificationType]({
-        //     message: 'Polling App',
-        //     description: description,
-        // });
     }
 
     handleLogin() {
-        // notification.success({
-        //     message: 'Polling App',
-        //     description: "You're successfully logged in.",
-        // });
+        notification.success({
+            message: 'App',
+            description: "You've successfully logged in.",
+        });
         this.loadCurrentUser();
         history.push('/success');
     }
@@ -88,7 +85,7 @@ class App extends Component {
                                 <Link to="/postList">Post list</Link>
                             </li>
                             <li>
-                               <Link to="/forum"> Forum </Link>
+                                <Link to="/forum"> Forum </Link>
                             </li>
                             <li>
                                 <Link to="/login">Login</Link>
@@ -105,10 +102,14 @@ class App extends Component {
                         <Route path="/forum">
                             <Forum/>
                         </Route>
+
                         <Route path="/login"
                                render={(props) => <LoginForm onLogin={this.handleLogin} {...props} />}/>
                         <Route path="/success"
                                render={(props) => <Success currentUser={this.state.currentUser} {...props} />}/>
+                        <Route path="/registration">
+                            <RegistrationForm/>
+                        </Route>
                         <Route path="/">
                             <Home/>
                         </Route>
