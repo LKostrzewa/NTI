@@ -5,36 +5,6 @@ import {Button, Form, Input, notification} from 'antd';
 import {register} from "../../utils/Requests";
 import history from "../../history";
 
-const formItemLayout = {
-    labelCol: {
-        xs: {
-            span: 12,
-        },
-        sm: {
-            span: 8,
-        },
-    },
-    wrapperCol: {
-        xs: {
-            span: 12,
-        },
-        sm: {
-            span: 8,
-        },
-    },
-};
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0,
-        },
-        sm: {
-            span: 16,
-            offset: 8,
-        },
-    },
-};
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
@@ -59,9 +29,10 @@ const RegistrationForm = () => {
 
     return (
         <Form
-            {...formItemLayout}
             form={form}
-            name="register-form"
+            layout="vertical"
+            name="registration_form"
+            className="registration-form"
             onFinish={onFinish}
             scrollToFirstError
         >
@@ -172,10 +143,11 @@ const RegistrationForm = () => {
                 </Form.Item>
             </Form.Item>
 
-            <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit">
+            <Form.Item>
+                <Button type="primary" htmlType="submit" className="registration-form-button">
                     Register
                 </Button>
+                <text className="login-link">Already have an acoount? <a href="../login">Login</a></text>
             </Form.Item>
         </Form>
     );
