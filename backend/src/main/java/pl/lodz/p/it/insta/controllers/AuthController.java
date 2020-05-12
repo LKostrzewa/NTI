@@ -52,7 +52,6 @@ public class AuthController {
         this.tokenProvider = tokenProvider;
     }
 
-
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -81,7 +80,6 @@ public class AuthController {
                     HttpStatus.BAD_REQUEST);
         }
 
-        // Creating user's account
         Account account = new Account(signUpRequest.getUsername(), signUpRequest.getFirstName(),
                 signUpRequest.getLastName(), signUpRequest.getPassword(), signUpRequest.getEmail(),
                 true);

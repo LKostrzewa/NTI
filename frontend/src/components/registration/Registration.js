@@ -153,4 +153,58 @@ const RegistrationForm = () => {
     );
 };
 
+function validateEmailAvailability() {
+    // First check for client side errors in email
+    const emailValue = this.state.email.value;
+    const emailValidation = this.validateEmail(emailValue);
+
+    if(emailValidation.validateStatus === 'error') {
+        this.setState({
+            email: {
+                value: emailValue,
+                ...emailValidation
+            }
+        });
+        return;
+    }
+
+    this.setState({
+        email: {
+            value: emailValue,
+            validateStatus: 'validating',
+            errorMsg: null
+        }
+    });
+
+    checkEmailAvailability(emailValue)
+        .then(response => {
+            if(response.available) {
+                this.setState({
+                    email: {
+                        value: emailValue,
+                        validateStatus: 'success',
+                        errorMsg: null
+                    }
+                });
+            } else {
+                this.setState({
+                    email: {
+                        value: emailValue,
+                        validateStatus: 'error',
+                        errorMsg: 'This Email is already registered'
+                    }
+                });
+            }
+        }).catch(error => {
+        // Marking validateStatus as success, Form will be recchecked at server
+        this.setState({
+            email: {
+                value: emailValue,
+                validateStatus: 'success',
+                errorMsg: null
+            }
+        });
+    });
+}
+
 export default RegistrationForm
