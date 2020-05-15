@@ -27,23 +27,28 @@ const LoginForm = (props) => {
             name="login_form"
             className="login-form"
             onFinish={onFinish}>
+
             <Form.Item
                 name="username"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your Username!'
+                        message: "Please enter your username"
                     }
                 ]}
             >
-                <Input prefix={<UserOutlined className="site-form-item-icon"/>} placeholder="Username"/>
+                <Input
+                    prefix={<UserOutlined className="site-form-item-icon"/>}
+                    type="text"
+                    placeholder="Username"/>
             </Form.Item>
+
             <Form.Item
                 name="password"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your Password!'
+                        message: "Please enter your password"
                     }
                 ]}
             >
@@ -53,6 +58,7 @@ const LoginForm = (props) => {
                     placeholder="Password"
                 />
             </Form.Item>
+
             <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     Log in

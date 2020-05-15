@@ -24,7 +24,7 @@ class App extends Component {
         this.handleLogin = this.handleLogin.bind(this);
 
         notification.config({
-            placement: 'topRight',
+            placement: "topRight",
             top: 70,
             duration: 3,
         });
@@ -65,11 +65,11 @@ class App extends Component {
 
     handleLogin() {
         notification.success({
-            message: 'App',
+            message: "App",
             description: "You've successfully logged in.",
         });
         this.loadCurrentUser();
-        history.push('/success');
+        history.push("/success");
     }
 
     render() {
