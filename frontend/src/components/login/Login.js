@@ -1,8 +1,8 @@
 import React from "react";
 import {Button, Form, Input} from "antd";
-import 'antd/dist/antd.css';
-import './Login.css';
-import {LockOutlined, UserOutlined} from '@ant-design/icons';
+import "antd/dist/antd.css";
+import "./Login.css";
+import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import {login} from "../../utils/Requests";
 import {ACCESS_TOKEN} from "../../utils/Constants";
 

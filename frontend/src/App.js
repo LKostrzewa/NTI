@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {Link, Route, Router, Switch} from "react-router-dom";
-import './App.css';
+import "./App.css";
 import PostList from "./containers/postList/PostList"
 import LoginForm from "./components/login/Login";
 import Success from "./components/success/Success";
@@ -10,6 +10,7 @@ import {getCurrentUser} from "./utils/Requests";
 import Forum from "./containers/forum/Forum";
 import {notification} from "antd";
 import RegistrationForm from "./components/registration/Registration";
+import LoadingIndicator from "./components/loadingIndicator/LoadingIndicator";
 
 class App extends Component {
     constructor(props) {
@@ -22,7 +23,6 @@ class App extends Component {
         this.handleLogout = this.handleLogout.bind(this);
         this.loadCurrentUser = this.loadCurrentUser.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-
         notification.config({
             placement: "topRight",
             top: 70,
@@ -54,12 +54,10 @@ class App extends Component {
 
     handleLogout(redirectTo = "/", notificationType = "success", description = "You're successfully logged out.") {
         localStorage.removeItem(ACCESS_TOKEN);
-
         this.setState({
             currentUser: null,
             isAuthenticated: false
         });
-
         history.push(redirectTo);
     }
 
@@ -73,6 +71,9 @@ class App extends Component {
     }
 
     render() {
+        if (this.state.isLoading) {
+            return <LoadingIndicator/>
+        }
         return (
             <Router history={history}>
                 <div>
