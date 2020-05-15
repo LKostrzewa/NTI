@@ -32,8 +32,8 @@ const LoginForm = (props) => {
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your Username!',
-                    },
+                        message: 'Please input your Username!'
+                    }
                 ]}
             >
                 <Input prefix={<UserOutlined className="site-form-item-icon"/>} placeholder="Username"/>
@@ -43,8 +43,8 @@ const LoginForm = (props) => {
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your Password!',
-                    },
+                        message: 'Please input your Password!'
+                    }
                 ]}
             >
                 <Input

@@ -1,146 +1,198 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import './Registration.css';
-import {Button, Form, Input, notification} from 'antd';
-import {register} from "../../utils/Requests";
-import history from "../../history";
+import React, {useState} from 'react'
+import 'antd/dist/antd.css'
+import './Registration.css'
+import {Button, Form, Input, notification} from 'antd'
+import {checkEmailAvailability, checkUsernameAvailability, register} from "../../utils/Requests"
+import history from "../../history"
 
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
+    const [usernameValidationStatus, setUsernameValidationStatus] = useState('')
+    const [usernameErrorMsg, setUsernameErrorMsg] = useState(null)
+    const [emailValidationStatus, setEmailValidationStatus] = useState('')
+    const [emailErrorMsg, setEmailErrorMsg] = useState(null)
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const {getFieldError} = form
 
     const onFinish = values => {
-        const registrationRequest = Object.assign({}, values);
+        const registrationRequest = Object.assign({}, values)
         delete registrationRequest.confirm
         register(registrationRequest)
-            .then(response => {
+            .then(() => {
                 notification.success({
                     message: 'App',
                     description: "You've successfully registered. You may log in now."
                 });
-                history.push('/login');
+                history.push('/login')
             }).catch(error => {
             notification.error({
                 message: 'App',
                 description: error.message || 'Sorry. Something went wrong. Please try again.'
-            });
-        });
-    };
+            })
+        })
+    }
+
+    const validateUsernameAvailability = () => {
+        if (getFieldError('username').length === 0) {
+            checkUsernameAvailability(username)
+                .then(response => {
+                    if (response.available) {
+                        setUsernameValidationStatus('success');
+                        setUsernameErrorMsg(null)
+                    } else {
+                        setUsernameValidationStatus('error');
+                        setUsernameErrorMsg('Username is already taken');
+                    }
+                })
+        }
+    }
+
+    const validateEmailAvailability = () => {
+        if (getFieldError('email').length === 0) {
+            checkEmailAvailability(email)
+                .then(response => {
+                    if (response.available) {
+                        setEmailValidationStatus('success')
+                        setEmailErrorMsg(null)
+                    } else {
+                        setEmailValidationStatus('error')
+                        setEmailErrorMsg('E-mail address is already taken')
+                    }
+                })
+        }
+    }
 
     return (
         <Form
             form={form}
-            layout="vertical"
-            name="registration_form"
-            className="registration-form"
+            layout={"vertical"}
+            name={"registration_form"}
+            className={"registration-form"}
             onFinish={onFinish}
             scrollToFirstError
         >
-            <Form.Item label="Username">
-                <Form.Item
-                    name="username"
-                    noStyle
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your username'
-                        },
-                    ]}
-                >
-                    <Input/>
-                </Form.Item>
+            <Form.Item
+                label={"Username"}
+                validateStatus={usernameValidationStatus}
+                help={usernameErrorMsg}
+                name={"username"}
+                rules={[
+                    {
+                        required: true
+                    },
+                    {
+                        validator: (rule, value) => {
+                            if (value) {
+                                setUsernameValidationStatus('success')
+                                setUsernameErrorMsg('')
+                                return Promise.resolve()
+                            } else {
+                                setUsernameValidationStatus('error')
+                                setUsernameErrorMsg('Username is required')
+                                return Promise.reject('')
+                            }
+                        }
+                    }
+                ]}
+            >
+                <Input
+                    value={username}
+                    onChange={event => setUsername(event.target.value)}
+                    onBlur={validateUsernameAvailability}/>
             </Form.Item>
 
-            <Form.Item label="First name">
-                <Form.Item
-                    name="firstName"
-                    noStyle
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your first name'
-                        },
-                    ]}
-                >
-                    <Input/>
-                </Form.Item>
+            <Form.Item
+                label={"First Name"}
+                name={"firstName"}
+                rules={[
+                    {
+                        required: true,
+                        message: 'First Name is required'
+                    }
+                ]}
+            >
+                <Input/>
             </Form.Item>
 
-            <Form.Item label="Last name">
-                <Form.Item
-                    name="lastName"
-                    noStyle
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your last name'
-                        },
-                    ]}
-                >
-                    <Input/>
-                </Form.Item>
+            <Form.Item
+                label={"Last Name"}
+                name={"lastName"}
+                rules={[
+                    {
+                        required: true,
+                        message: 'Last Name is required'
+                    }
+                ]}
+            >
+                <Input/>
             </Form.Item>
 
-            <Form.Item label="E-mail">
-                <Form.Item
-                    name="email"
-                    noStyle
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'Invalid E-mail address'
-                        },
-                        {
-                            required: true,
-                            message: 'Please input your E-mail address'
-                        },
-                    ]}
-                >
-                    <Input/>
-                </Form.Item>
+            <Form.Item
+                label={"E-mail"}
+                validateStatus={emailValidationStatus}
+                help={emailErrorMsg}
+                name={"email"}
+                rules={[
+                    {
+                        required: true,
+                    },
+                    {
+                        validator: (rule, value) => {
+                            if (value) {
+                                setEmailValidationStatus('success')
+                                setEmailErrorMsg('')
+                                return Promise.resolve()
+                            } else {
+                                setEmailValidationStatus('error')
+                                setEmailErrorMsg('E-mail address is required')
+                                return Promise.reject('')
+                            }
+                        }
+                    }
+                ]}
+            >
+                <Input
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
+                    onBlur={validateEmailAvailability}/>
             </Form.Item>
 
-            <Form.Item label="Password">
-                <Form.Item
-                    name="password"
-                    noStyle
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password'
-                        },
-                    ]}
-                    hasFeedback
-
-                >
-                    <Input.Password/>
-                </Form.Item>
+            <Form.Item
+                label={"Password"}
+                name={"password"}
+                hasFeedback
+                rules={[
+                    {
+                        required: true,
+                        message: 'Password is required'
+                    }
+                ]}
+            >
+                <Input.Password/>
             </Form.Item>
 
-            <Form.Item label="Confirm Password">
-                <Form.Item
-                    name="confirm"
-                    dependencies={['password']}
-                    hasFeedback
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please confirm your password'
-
-                        },
-                        ({getFieldValue}) => ({
-                            validator(rule, value) {
-                                if (!value || getFieldValue('password') === value) {
-                                    return Promise.resolve();
-                                }
-
-                                return Promise.reject('Passwords do not match');
-                            },
-                        }),
-                    ]}
-                >
-                    <Input.Password/>
-                </Form.Item>
+            <Form.Item
+                label={"Confirm Password"}
+                name={"confirm"}
+                dependencies={['password']}
+                hasFeedback
+                rules={[
+                    {
+                        required: true,
+                        message: 'Password confirmation is required'
+                    },
+                    ({getFieldValue}) => ({
+                        validator(rule, value) {
+                            if (!value || getFieldValue('password') === value) {
+                                return Promise.resolve()
+                            } else return Promise.reject('Passwords do not match');
+                        }
+                    })
+                ]}
+            >
+                <Input.Password/>
             </Form.Item>
 
             <Form.Item>
@@ -150,61 +202,7 @@ const RegistrationForm = () => {
                 <text className="login-link">Already have an acoount? <a href="../login">Login</a></text>
             </Form.Item>
         </Form>
-    );
-};
-
-function validateEmailAvailability() {
-    // First check for client side errors in email
-    const emailValue = this.state.email.value;
-    const emailValidation = this.validateEmail(emailValue);
-
-    if(emailValidation.validateStatus === 'error') {
-        this.setState({
-            email: {
-                value: emailValue,
-                ...emailValidation
-            }
-        });
-        return;
-    }
-
-    this.setState({
-        email: {
-            value: emailValue,
-            validateStatus: 'validating',
-            errorMsg: null
-        }
-    });
-
-    checkEmailAvailability(emailValue)
-        .then(response => {
-            if(response.available) {
-                this.setState({
-                    email: {
-                        value: emailValue,
-                        validateStatus: 'success',
-                        errorMsg: null
-                    }
-                });
-            } else {
-                this.setState({
-                    email: {
-                        value: emailValue,
-                        validateStatus: 'error',
-                        errorMsg: 'This Email is already registered'
-                    }
-                });
-            }
-        }).catch(error => {
-        // Marking validateStatus as success, Form will be recchecked at server
-        this.setState({
-            email: {
-                value: emailValue,
-                validateStatus: 'success',
-                errorMsg: null
-            }
-        });
-    });
+    )
 }
 
 export default RegistrationForm
