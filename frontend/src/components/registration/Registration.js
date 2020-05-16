@@ -22,43 +22,43 @@ const RegistrationForm = () => {
         register(registrationRequest)
             .then(() => {
                 notification.success({
-                    message: 'App',
+                    message: "App",
                     description: "You've successfully registered. You may log in now."
                 });
-                history.push('/login')
+                history.push("/login")
             }).catch(error => {
             notification.error({
-                message: 'App',
-                description: error.message || 'Sorry. Something went wrong. Please try again.'
+                message: "App",
+                description: error.message || "Sorry. Something went wrong. Please try again."
             })
         })
     }
 
     const validateUsernameAvailability = () => {
-        if (getFieldError('username').length === 0) {
+        if (getFieldError("username").length === 0) {
             checkUsernameAvailability(username)
                 .then(response => {
                     if (response.available) {
-                        setUsernameValidationStatus('success');
+                        setUsernameValidationStatus("success");
                         setUsernameErrorMsg(null)
                     } else {
-                        setUsernameValidationStatus('error');
-                        setUsernameErrorMsg('Username is already taken');
+                        setUsernameValidationStatus("error");
+                        setUsernameErrorMsg("Username is already taken");
                     }
                 })
         }
     }
 
     const validateEmailAvailability = () => {
-        if (getFieldError('email').length === 0) {
+        if (getFieldError("email").length === 0) {
             checkEmailAvailability(email)
                 .then(response => {
                     if (response.available) {
-                        setEmailValidationStatus('success')
+                        setEmailValidationStatus("success")
                         setEmailErrorMsg(null)
                     } else {
-                        setEmailValidationStatus('error')
-                        setEmailErrorMsg('E-mail address is already taken')
+                        setEmailValidationStatus("error")
+                        setEmailErrorMsg("E-mail address is already taken")
                     }
                 })
         }
@@ -67,17 +67,17 @@ const RegistrationForm = () => {
     return (
         <Form
             form={form}
-            layout={"vertical"}
-            name={"registration_form"}
-            className={"registration-form"}
+            layout="vertical"
+            name="registration_form"
+            className="registration-form"
             onFinish={onFinish}
             scrollToFirstError
         >
             <Form.Item
-                label={"Username"}
+                label="Username"
                 validateStatus={usernameValidationStatus}
                 help={usernameErrorMsg}
-                name={"username"}
+                name="username"
                 rules={[
                     {
                         required: true
@@ -85,12 +85,12 @@ const RegistrationForm = () => {
                     {
                         validator: (rule, value) => {
                             if (value) {
-                                setUsernameValidationStatus('success')
+                                setUsernameValidationStatus("success")
                                 setUsernameErrorMsg('')
                                 return Promise.resolve()
                             } else {
-                                setUsernameValidationStatus('error')
-                                setUsernameErrorMsg('Username is required')
+                                setUsernameValidationStatus("error")
+                                setUsernameErrorMsg("Username is required")
                                 return Promise.reject('')
                             }
                         }
@@ -104,12 +104,12 @@ const RegistrationForm = () => {
             </Form.Item>
 
             <Form.Item
-                label={"First Name"}
-                name={"firstName"}
+                label="First Name"
+                name="firstName"
                 rules={[
                     {
                         required: true,
-                        message: 'First Name is required'
+                        message: "First Name is required"
                     }
                 ]}
             >
@@ -117,12 +117,12 @@ const RegistrationForm = () => {
             </Form.Item>
 
             <Form.Item
-                label={"Last Name"}
-                name={"lastName"}
+                label="Last Name"
+                name="lastName"
                 rules={[
                     {
                         required: true,
-                        message: 'Last Name is required'
+                        message: "Last Name is required"
                     }
                 ]}
             >
@@ -130,10 +130,10 @@ const RegistrationForm = () => {
             </Form.Item>
 
             <Form.Item
-                label={"E-mail"}
+                label="E-mail"
                 validateStatus={emailValidationStatus}
                 help={emailErrorMsg}
-                name={"email"}
+                name="email"
                 rules={[
                     {
                         required: true,
@@ -141,12 +141,12 @@ const RegistrationForm = () => {
                     {
                         validator: (rule, value) => {
                             if (value) {
-                                setEmailValidationStatus('success')
+                                setEmailValidationStatus("success")
                                 setEmailErrorMsg('')
                                 return Promise.resolve()
                             } else {
-                                setEmailValidationStatus('error')
-                                setEmailErrorMsg('E-mail address is required')
+                                setEmailValidationStatus("error")
+                                setEmailErrorMsg("E-mail address is required")
                                 return Promise.reject('')
                             }
                         }
@@ -160,13 +160,13 @@ const RegistrationForm = () => {
             </Form.Item>
 
             <Form.Item
-                label={"Password"}
-                name={"password"}
+                label="Password"
+                name="password"
                 hasFeedback
                 rules={[
                     {
                         required: true,
-                        message: 'Password is required'
+                        message: "Password is required"
                     }
                 ]}
             >
@@ -174,20 +174,20 @@ const RegistrationForm = () => {
             </Form.Item>
 
             <Form.Item
-                label={"Confirm Password"}
-                name={"confirm"}
-                dependencies={['password']}
+                label="Confirm Password"
+                name="confirm"
+                dependencies={["password"]}
                 hasFeedback
                 rules={[
                     {
                         required: true,
-                        message: 'Password confirmation is required'
+                        message: "Password confirmation is required"
                     },
                     ({getFieldValue}) => ({
                         validator(rule, value) {
-                            if (!value || getFieldValue('password') === value) {
+                            if (!value || getFieldValue("password") === value) {
                                 return Promise.resolve()
-                            } else return Promise.reject('Passwords do not match');
+                            } else return Promise.reject("Passwords do not match")
                         }
                     })
                 ]}
@@ -199,7 +199,7 @@ const RegistrationForm = () => {
                 <Button type="primary" htmlType="submit" className="registration-form-button">
                     Register
                 </Button>
-                <text className="login-link">Already have an acoount? <a href="../login">Login</a></text>
+                <text className="login-link">Already have an account? <a href="../login">Login</a></text>
             </Form.Item>
         </Form>
     )

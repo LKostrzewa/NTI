@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {Link, Route, Router, Switch} from "react-router-dom";
-import './App.css';
+import "./App.css";
 import PostList from "./containers/postList/PostList"
 import LoginForm from "./components/login/Login";
 import Success from "./components/success/Success";
@@ -8,8 +8,12 @@ import history from "./history";
 import {ACCESS_TOKEN} from "./utils/Constants";
 import {getCurrentUser} from "./utils/Requests";
 import Forum from "./containers/forum/Forum";
-import {notification} from "antd";
+import {Layout, notification} from "antd";
 import RegistrationForm from "./components/registration/Registration";
+import LoadingIndicator from "./components/loadingIndicator/LoadingIndicator";
+import AppHeader from "./components/appHeader/AppHeader";
+
+const {Content} = Layout;
 
 class App extends Component {
     constructor(props) {
@@ -22,9 +26,8 @@ class App extends Component {
         this.handleLogout = this.handleLogout.bind(this);
         this.loadCurrentUser = this.loadCurrentUser.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-
         notification.config({
-            placement: 'topRight',
+            placement: "topRight",
             top: 70,
             duration: 3,
         });
@@ -54,68 +57,74 @@ class App extends Component {
 
     handleLogout(redirectTo = "/", notificationType = "success", description = "You're successfully logged out.") {
         localStorage.removeItem(ACCESS_TOKEN);
-
         this.setState({
             currentUser: null,
             isAuthenticated: false
         });
-
         history.push(redirectTo);
     }
 
     handleLogin() {
         notification.success({
-            message: 'App',
+            message: "App",
             description: "You've successfully logged in.",
         });
         this.loadCurrentUser();
-        history.push('/success');
+        history.push("/success");
     }
 
     render() {
+        if (this.state.isLoading) {
+            return <LoadingIndicator/>
+        }
         return (
-            <Router history={history}>
-                <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/postList">Post list</Link>
-                            </li>
-                            <li>
-                                <Link to="/forum"> Forum </Link>
-                            </li>
-                            <li>
-                                <Link to="/login">Login</Link>
-                            </li>
-                        </ul>
-                    </nav>
+            <Layout className="app-container">
+                <Router history={history}>
+                    <AppHeader isAuthenticated={this.state.isAuthenticated}
+                               currentUser={this.state.currentUser}
+                               onLogout={this.handleLogout}/>
+                    <Content className="app-content">
+                        <div className="container">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <Link to="/">Home</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/postList">Post list</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/forum"> Forum </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/login">Login</Link>
+                                        </li>
+                                    </ul>
+                                </nav>
 
-                    {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-                    <Switch>
-                        <Route path="/postList">
-                            <PostList/>
-                        </Route>
-                        <Route path="/forum">
-                            <Forum/>
-                        </Route>
-
-                        <Route path="/login"
-                               render={(props) => <LoginForm onLogin={this.handleLogin} {...props} />}/>
-                        <Route path="/success"
-                               render={(props) => <Success currentUser={this.state.currentUser} {...props} />}/>
-                        <Route path="/registration">
-                            <RegistrationForm/>
-                        </Route>
-                        <Route path="/">
-                            <Home/>
-                        </Route>
-                    </Switch>
-                </div>
-            </Router>
+                                <Switch>
+                                    <Route path="/postList">
+                                        <PostList/>
+                                    </Route>
+                                    <Route path="/forum">
+                                        <Forum/>
+                                    </Route>
+                                    <Route path="/login"
+                                           render={(props) => <LoginForm onLogin={this.handleLogin} {...props} />}/>
+                                    <Route path="/success"
+                                           render={(props) => <Success
+                                               currentUser={this.state.currentUser} {...props} />}/>
+                                    <Route path="/registration">
+                                        <RegistrationForm/>
+                                    </Route>
+                                    <Route path="/">
+                                        <Home/>
+                                    </Route>
+                                </Switch>
+                        </div>
+                    </Content>
+                </Router>
+            </Layout>
         );
     }
 }
