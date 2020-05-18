@@ -71,4 +71,10 @@ export function getPosts() {
     });
 }
 
+export function getTopicsList() {
+    return request({
+        url: API_BASE_URL + "/forum",
+        method: 'GET',
+    });
+}
 

@@ -113,7 +113,7 @@ class App extends Component {
 }
 
 function Home() {
-    return <h2>Witaj na naszym Instagramie!!!</h2>;
+    return <h2>Welcome and thank you my friend</h2>;
 }
 
 export default App;

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Topic} from "../../components/topic/Topic";
+import {getTopicsList} from "../../utils/Requests";
 
 export default class Forum extends Component {
     constructor(props) {
@@ -12,9 +13,7 @@ export default class Forum extends Component {
     componentDidMount = () => {
         let topicsList = null;
 
-        fetch(" http://localhost:8080/forum/").then((response) => {
-            return response.json()
-        })
+        getTopicsList()
             .then((data) => {
                 topicsList = data;
             }).finally(() => {
@@ -25,8 +24,8 @@ export default class Forum extends Component {
     };
 
     render() {
-        let topics = this.state.topics.map(function (c,index) {
-            return(
+        let topics = this.state.topics.map(function (c, index) {
+            return (
                 <Topic id={c.id} title={c.title} username={c.account.username}/>
             );
         });

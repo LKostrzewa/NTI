@@ -72,9 +72,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/posts/**").permitAll()
-                .antMatchers("/addCommentToPost/**").permitAll()
-                .antMatchers("/forum/**").permitAll()
                 .antMatchers("/accounts/checkUsernameAvailability", "/accounts/checkEmailAvailability")
                 .permitAll()
                 .anyRequest().authenticated();
