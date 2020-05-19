@@ -85,23 +85,6 @@ class App extends Component {
                                onLogout={this.handleLogout}/>
                     <Content className="app-content">
                         <div className="container">
-                                <nav>
-                                    <ul>
-                                        <li>
-                                            <Link to="/">Home</Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/postList">Post list</Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/forum"> Forum </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/login">Login</Link>
-                                        </li>
-                                    </ul>
-                                </nav>
-
                                 <Switch>
                                     <Route path="/postList">
                                         <PostList/>
@@ -130,7 +113,7 @@ class App extends Component {
 }
 
 function Home() {
-    return <h2>Witaj na naszym Instagramie!!!</h2>;
+    return <h2>Welcome and thank you my friend</h2>;
 }
 
 export default App;

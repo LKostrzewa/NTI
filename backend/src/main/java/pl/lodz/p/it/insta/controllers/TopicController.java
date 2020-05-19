@@ -10,10 +10,10 @@ import pl.lodz.p.it.insta.services.TopicService;
 import java.util.List;
 
 @RestController
-@RequestMapping("forum")
+@RequestMapping("/forum")
 public class TopicController {
 
-    private TopicService topicService;
+    private final TopicService topicService;
 
     @Autowired
     public TopicController(TopicService topicService) {
