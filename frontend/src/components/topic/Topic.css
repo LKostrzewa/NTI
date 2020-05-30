@@ -8,8 +8,13 @@
 
 .Topic-user {
     font-weight: bold;
+    text-align: left;
 }
 
 .Topic-title {
     font-size: 14px;
+}
+
+.Topic-date {
+    float: right;
 }
