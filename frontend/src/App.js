@@ -8,6 +8,7 @@ import history from "./history";
 import {ACCESS_TOKEN} from "./utils/Constants";
 import {getCurrentUser} from "./utils/Requests";
 import Forum from "./containers/forum/Forum";
+import TopicPosts from "./containers/topicPosts/TopicPosts";
 import {Layout, notification} from "antd";
 import RegistrationForm from "./components/registration/Registration";
 import LoadingIndicator from "./components/loadingIndicator/LoadingIndicator";
@@ -88,6 +89,9 @@ class App extends Component {
                                 <Switch>
                                     <Route path="/postList">
                                         <PostList/>
+                                    </Route>
+                                    <Route path="/forum/1">
+                                        <TopicPosts/>
                                     </Route>
                                     <Route path="/forum">
                                         <Forum/>

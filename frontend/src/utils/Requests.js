@@ -78,3 +78,10 @@ export function getTopicsList() {
     });
 }
 
+export function getPostsUnderTopic() {
+    return request({
+        url: API_BASE_URL + "/forum/topic/1",
+        method: 'GET',
+    });
+}
+

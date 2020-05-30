@@ -24,7 +24,7 @@ export default class Forum extends Component {
     };
 
     render() {
-        let topics = this.state.topics.map(function (c, index) {
+        let topics = this.state.topics.map(function (c) {
             return (
                 <Topic id={c.id} title={c.title} username={c.account.username}/>
             );
