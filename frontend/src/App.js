@@ -90,9 +90,7 @@ class App extends Component {
                                     <Route path="/postList">
                                         <PostList/>
                                     </Route>
-                                    <Route path="/forum/1">
-                                        <TopicPosts/>
-                                    </Route>
+                                    <Route path="/forum/:id" render={(props) => <TopicPosts {...props}/>}/>
                                     <Route path="/forum">
                                         <Forum/>
                                     </Route>

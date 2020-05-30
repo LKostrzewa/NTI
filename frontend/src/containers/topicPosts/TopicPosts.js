@@ -11,7 +11,7 @@ export default class TopicPosts extends Component {
             posts: [],
             topicTitle: null,
             topicUser: null,
-            topicDate: null
+            topicDate: null,
         }
     }
 
@@ -20,8 +20,9 @@ export default class TopicPosts extends Component {
         hour: '2-digit',minute: '2-digit'});
 
         let topic = null;
+        const {id} = this.props.match.params;
 
-        getPostsUnderTopic()
+        getPostsUnderTopic(id)
             .then(data => {
                 topic = data;
             }).finally(() => {

@@ -78,9 +78,9 @@ export function getTopicsList() {
     });
 }
 
-export function getPostsUnderTopic() {
+export function getPostsUnderTopic(id) {
     return request({
-        url: API_BASE_URL + "/forum/topic/1",
+        url: API_BASE_URL + "/forum/topic/" + id,
         method: 'GET',
     });
 }

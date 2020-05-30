@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './Topic.css'
+import history from "../../history"
 
 export class Topic extends Component{
     constructor(props) {
@@ -20,7 +21,7 @@ export class Topic extends Component{
         const date = dtfPL.format(Date.parse(this.state.addDate));
 
 
-        return <article className="Topic" ref="Topic">
+        return <article className="Topic" ref="Topic" onClick={() => history.push("/forum/" + this.state.id)}>
                 <header>
                 <div className="Topic-user">
                     {username}
