@@ -1,14 +1,13 @@
 import React, {Component} from "react";
-import './Topic.css'
-import history from "../../history"
+import './Post.css'
 
-export class Topic extends Component{
+export class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
             id: props.id,
             username: props.username,
-            title: props.title,
+            content: props.content,
             addDate: props.addDate
         }
     }
@@ -17,22 +16,21 @@ export class Topic extends Component{
         const dtfPL = new Intl.DateTimeFormat('PL', { year: 'numeric', month: '2-digit', day: '2-digit',
         hour: '2-digit',minute: '2-digit'});
         const username = this.state.username;
-        const title = this.state.title;
+        const content = this.state.content;
         const date = dtfPL.format(Date.parse(this.state.addDate));
 
-
-        return <article className="Topic" ref="Topic" onClick={() => history.push("/forum/" + this.state.id)}>
-                <header>
-                <div className="Topic-user">
+        return <article className="PostForum" ref="PostForum">
+            <header>
+                <div className="PostForum-user">
                     {username}
-                    <span className="Topic-date">
+                    <span className="PostForum-date">
                         {date}
                     </span>
                 </div>
-                </header>
-                <div className="Topic-title">
-                    {title}
-                </div>
-            </article>;
+            </header>
+            <div>
+                {content}
+            </div>
+        </article>
     }
 }

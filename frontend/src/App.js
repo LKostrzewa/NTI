@@ -8,6 +8,7 @@ import history from "./history";
 import {ACCESS_TOKEN} from "./utils/Constants";
 import {getCurrentUser} from "./utils/Requests";
 import Forum from "./containers/forum/Forum";
+import TopicPosts from "./containers/topicPosts/TopicPosts";
 import {Layout, notification} from "antd";
 import RegistrationForm from "./components/registration/Registration";
 import LoadingIndicator from "./components/loadingIndicator/LoadingIndicator";
@@ -89,6 +90,7 @@ class App extends Component {
                                     <Route path="/postList">
                                         <PostList/>
                                     </Route>
+                                    <Route path="/forum/:id" render={(props) => <TopicPosts {...props}/>}/>
                                     <Route path="/forum">
                                         <Forum/>
                                     </Route>

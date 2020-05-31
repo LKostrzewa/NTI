@@ -4,12 +4,22 @@
     background-color: #fff;
     margin-bottom: 20px;
     margin-right: 25%;
+    cursor: pointer;
+}
+
+.Topic:hover {
+    border: 3px solid #1E90FF;
 }
 
 .Topic-user {
     font-weight: bold;
+    text-align: left;
 }
 
 .Topic-title {
     font-size: 14px;
+}
+
+.Topic-date {
+    float: right;
 }
