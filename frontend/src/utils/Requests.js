@@ -85,3 +85,11 @@ export function getPostsUnderTopic(id) {
     });
 }
 
+export function addTopic(topic) {
+    return request({
+        url: API_BASE_URL + "/forum/addTopic",
+        method: 'POST',
+        body: JSON.stringify(topic)
+    });
+}
+

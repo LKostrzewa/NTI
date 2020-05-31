@@ -13,6 +13,7 @@ import {Layout, notification} from "antd";
 import RegistrationForm from "./components/registration/Registration";
 import LoadingIndicator from "./components/loadingIndicator/LoadingIndicator";
 import AppHeader from "./components/appHeader/AppHeader";
+import NewTopic from "./containers/newTopic/NewTopic";
 
 const {Content} = Layout;
 
@@ -89,6 +90,9 @@ class App extends Component {
                                 <Switch>
                                     <Route path="/postList">
                                         <PostList/>
+                                    </Route>
+                                    <Route path="/forum/addTopic" >
+                                        <NewTopic/>
                                     </Route>
                                     <Route path="/forum/:id" render={(props) => <TopicPosts {...props}/>}/>
                                     <Route path="/forum">
