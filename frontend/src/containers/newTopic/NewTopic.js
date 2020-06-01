@@ -14,24 +14,32 @@ export default class NewTopic extends Component {
   }
 
   handleChange(event) {
-      console.log(this.state);
       this.setState({title: event.target.value});  }
   handleSubmit(event) {
       event.preventDefault();
-      console.log(this.state);
-    addTopic(this.state);
+      addTopic(this.state)
+          .then(
+              history.push("/forum")
+          );
   }
 
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Nagłówek nowego tematu:
-          <textarea value={this.state.title} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Dodaj" />
-      </form>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Nagłówek nowego tematu:
+              <div>
+                  <textarea value={this.state.title} onChange={this.handleChange} />
+              </div>
+            </label>
+            <div>
+                <input type="submit" value="Dodaj" />
+            </div>
+          </form>
+            <button onClick={() => history.push("/forum")}>Powrót</button>
+        </div>
     );
   }
 }

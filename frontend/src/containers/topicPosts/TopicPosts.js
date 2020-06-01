@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {getPostsUnderTopic} from "../../utils/Requests";
 import {Post} from "../../components/forumPost/Post";
 import './TopicPosts.css'
+import history from "../../history";
 
 export default class TopicPosts extends Component {
 
@@ -53,6 +54,7 @@ export default class TopicPosts extends Component {
                     <div className="TopicPosts-user"> {topicUser} </div>
                 </h2>
                 {posts}
+                <button onClick={() => history.push("/forum")}>Powrót</button>
             </div>
         )
     }
