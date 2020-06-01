@@ -101,3 +101,10 @@ export function addPostToTopic(post) {
     });
 }
 
+export function deleteTopic(id) {
+    return request({
+        url: API_BASE_URL + "/forum/topic/ " + id,
+        method: 'DELETE',
+    })
+}
+
