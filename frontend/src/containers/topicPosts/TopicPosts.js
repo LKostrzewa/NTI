@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {getPostsUnderTopic} from "../../utils/Requests";
+import {addPostToTopic, getPostsUnderTopic} from "../../utils/Requests";
 import {Post} from "../../components/forumPost/Post";
 import './TopicPosts.css'
 import history from "../../history";
@@ -9,10 +9,13 @@ export default class TopicPosts extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: null,
             posts: [],
             topicTitle: null,
             topicUser: null,
             topicDate: null,
+            addPost: false,
+            newPostContent: null,
         }
     }
 
@@ -28,12 +31,41 @@ export default class TopicPosts extends Component {
                 topic = data;
             }).finally(() => {
             this.setState({
+                id: id,
                 topicTitle: topic.title,
                 topicUser: topic.account.username,
                 topicDate: dtfPL.format(Date.parse(topic.addDate)),
                 posts: topic.forumPosts
             })
         });
+    };
+
+    addNewPost = () =>{
+        this.setState({
+            addPost: true,
+        })
+    };
+
+    cancelAdd = () => {
+        this.setState({
+            addPost: false,
+        })
+    };
+
+    handleChange = (event) => {
+      this.setState({newPostContent: event.target.value});
+    };
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const newPostJson = {
+            "content": this.state.newPostContent,
+            "topicId": this.state.id
+        };
+        addPostToTopic(newPostJson)
+          .finally(() => {
+              window.location.reload()
+          });
     };
 
     render() {
@@ -46,6 +78,7 @@ export default class TopicPosts extends Component {
         let topicTitle = this.state.topicTitle;
         let topicUser = this.state.topicUser;
         let topicDate = this.state.topicDate;
+        let addPost = this.state.addPost;
 
         return (
             <div>
@@ -54,7 +87,27 @@ export default class TopicPosts extends Component {
                     <div className="TopicPosts-user"> {topicUser} </div>
                 </h2>
                 {posts}
-                <button onClick={() => history.push("/forum")}>Powrót</button>
+                {addPost === false ?
+                    <div>
+                        <button onClick={() => history.push("/forum")}>Powrót</button>
+                        <button onClick={this.addNewPost}>Dodaj nowy post</button>
+                    </div>
+                    :
+                    <div>
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                              Treść nowego postu:
+                              <div>
+                                  <textarea value={this.state.title} onChange={this.handleChange} />
+                              </div>
+                            </label>
+                            <div>
+                                <input type="submit" value="Dodaj" />
+                            </div>
+                        </form>
+                        <button onClick={this.cancelAdd}>Powrót</button>
+                    </div>
+                }
             </div>
         )
     }
