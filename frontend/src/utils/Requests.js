@@ -101,3 +101,12 @@ export function addPostToTopic(post) {
     });
 }
 
+export function addPost(post) {
+    return request( {
+        url: API_BASE_URL + "/posts/addPost",
+        method: 'POST',
+        body: JSON.stringify(post)
+    })
+
+}
+

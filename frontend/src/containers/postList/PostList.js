@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import './PostList.css'
 import {Post} from "../../components/post/Post";
 import {getPosts} from "../../utils/Requests";
+import history from "../../history";
 
 export default class PostList extends Component {
     constructor(props) {
@@ -37,7 +38,11 @@ export default class PostList extends Component {
             <div className="centered">
                 <h2>Posty: </h2>
                 {posts}
+                <span className="PostList-addButton">
+                    <button onClick={() => history.push("/posts/addPost")}>Dodaj nowy POST</button>
+                </span>
             </div>
+
         )
     }
 }

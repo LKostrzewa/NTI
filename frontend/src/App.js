@@ -14,6 +14,7 @@ import RegistrationForm from "./components/registration/Registration";
 import LoadingIndicator from "./components/loadingIndicator/LoadingIndicator";
 import AppHeader from "./components/appHeader/AppHeader";
 import NewTopic from "./containers/newTopic/NewTopic";
+import NewPost from "./containers/newPost/NewPost";
 
 const {Content} = Layout;
 
@@ -90,6 +91,9 @@ class App extends Component {
                                 <Switch>
                                     <Route path="/postList">
                                         <PostList/>
+                                    </Route>
+                                    <Route path="/posts/addPost">
+                                        <NewPost/>
                                     </Route>
                                     <Route path="/forum/addTopic" >
                                         <NewTopic/>
