@@ -93,3 +93,11 @@ export function addTopic(topic) {
     });
 }
 
+export function addPostToTopic(post) {
+    return request({
+        url: API_BASE_URL + "/forum/addForumPost",
+        method: 'POST',
+        body: JSON.stringify(post)
+    });
+}
+
