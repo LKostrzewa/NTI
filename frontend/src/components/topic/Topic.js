@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './Topic.css'
 import history from "../../history"
-import {getCurrentUser, deleteTopic} from "../../utils/Requests";
+import {getCurrentUser, deleteTopic, editTopic} from "../../utils/Requests";
 
 export class Topic extends Component{
     constructor(props) {
@@ -11,7 +11,9 @@ export class Topic extends Component{
             username: props.username,
             title: props.title,
             addDate: props.addDate,
-            isUserTopic: props.isUserTopic
+            isUserTopic: props.isUserTopic,
+            editTopicContent: props.editTopicContent,
+            editTopic: props.editTopic
         }
     }
 
@@ -29,9 +31,37 @@ export class Topic extends Component{
 
     deleteTopic = () => {
         deleteTopic(this.state.id)
-            .then(() => {
+            .finally(() => {
             window.location.reload()
         });
+    };
+
+    editStart = () => {
+        this.setState({
+            editTopic: true,
+        })
+    };
+
+    cancelEdit = () => {
+        this.setState({
+            editTopic: false,
+        })
+    };
+
+    handleChange = (event) => {
+      this.setState({editPostContent: event.target.value});
+    };
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const newPostJson = {
+            "content": this.state.editPostContent,
+            "topicId": this.state.id
+        };
+        editTopic(newPostJson)
+          .finally(() => {
+              window.location.reload()
+          });
     };
 
     render() {
@@ -41,6 +71,7 @@ export class Topic extends Component{
         const title = this.state.title;
         const date = dtfPL.format(Date.parse(this.state.addDate));
         this.belongsToUser();
+        let editTopic = this.state.editTopic;
 
         return <div className="Topic" ref="Topic">
                 <article  onClick={() => history.push("/forum/" + this.state.id)}>
@@ -57,10 +88,12 @@ export class Topic extends Component{
                     </div>
                 </article>
                 {this.state.isUserTopic === true &&
+                //{editTopic === false ?
                     <div>
-                        <button>Edytuj</button>
+                        <button onClick={this.editStart}>Edytuj</button>
                         <button onClick={this.deleteTopic}>Usuń</button>
                     </div>
+                //}
                 }
             </div>
     }
