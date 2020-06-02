@@ -29,7 +29,7 @@ export class Topic extends Component {
         });
     };
 
-    deleteTopic = () => {
+    deleteForumTopic = () => {
         deleteTopic(this.state.id)
             .finally(() => {
                 window.location.reload()
@@ -70,7 +70,7 @@ export class Topic extends Component {
             <div>{editTopic === false ?
                 <div>
                     <button onClick={this.editStart}>Edytuj</button>
-                    <button onClick={this.deleteTopic}> Usuń</button>
+                    <button onClick={this.deleteForumTopic}> Usuń</button>
                 </div>
                 :
                 <div>

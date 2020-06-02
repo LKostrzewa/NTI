@@ -116,3 +116,18 @@ export function editTopic(topic) {
     })
 }
 
+export function deleteForumPost(id) {
+    return request({
+        url: API_BASE_URL + "/forum/forumPost/ " + id,
+        method: 'DELETE',
+    })
+}
+
+export function editForumPost(topic) {
+    return request({
+        url: API_BASE_URL + "/forum/editForumPost",
+        method: 'PUT',
+        body: JSON.stringify(topic)
+    })
+}
+
