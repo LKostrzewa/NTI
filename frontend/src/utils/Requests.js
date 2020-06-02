@@ -110,7 +110,7 @@ export function deleteTopic(id) {
 
 export function editTopic(topic) {
     return request({
-        url: API_BASE_URL + "/forum/topic",
+        url: API_BASE_URL + "/forum/editTopic",
         method: 'PUT',
         body: JSON.stringify(topic)
     })
