@@ -71,6 +71,14 @@ export function getPosts() {
     });
 }
 
+export function addCommentToPost(comment) {
+    return request({
+        url: API_BASE_URL + "/posts/addCommentToPost",
+        method: 'POST',
+        body: JSON.stringify(comment)
+    });
+}
+
 export function getTopicsList() {
     return request({
         url: API_BASE_URL + "/forum",

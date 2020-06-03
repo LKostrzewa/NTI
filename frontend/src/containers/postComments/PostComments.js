@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {PostComment} from "../../components/postComment/PostComment";
 import './PostComments.css'
+import {addCommentToPost} from "../../utils/Requests";
 
 export class PostComments extends Component {
     constructor(props) {
@@ -43,14 +44,8 @@ export class PostComments extends Component {
             "postId": postId,
             "content": newComment
         };
-        const response = fetch('http://localhost:8080/posts/addCommentToPost/', {
-            dataType: "json",
-            method: 'POST',
-            body: JSON.stringify(newCommentJson),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).finally(() =>  window.location.reload());
+        addCommentToPost(newCommentJson)
+            .finally(() =>  window.location.reload());
         return false;
     };
 
