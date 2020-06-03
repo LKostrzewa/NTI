@@ -25,7 +25,6 @@ export class PostComment extends Component {
             .then(data => {
                 user = data;
             }).finally(() => {
-            console.log("bbb "+user.username+"  :  "+this.state.username);
             this.setState({
                 isUserComment: this.state.username === user.username,
             })

@@ -16,7 +16,7 @@ export class Post extends Component {
             lob: props.lob,
             description: props.description,
             comments: props.comments,
-            isUserTopic: false,
+            isUserPost: false,
             currentUserName: null
         }
         this.deletePost = this.deletePost.bind(this);
@@ -29,7 +29,7 @@ export class Post extends Component {
                 user = data;
             }).finally(() => {
             this.setState({
-                isUserTopic: this.state.username === user.username,
+                isUserPost: this.state.username === user.username,
                 currentUserName: user.username
             })
         });
@@ -50,7 +50,7 @@ export class Post extends Component {
         const lob = this.state.lob;
         const description = this.state.description;
         const comments = this.state.comments;
-        const isUserTopic = this.state.isUserTopic;
+        const isUserPost = this.state.isUserPost;
         const currentUserName = this.state.currentUserName;
 
 
@@ -64,7 +64,7 @@ export class Post extends Component {
                     </div>
 
                 </div>
-                {isUserTopic === true ?
+                {isUserPost === true ?
                     <IconButton className="Post-isUserTopic" aria-label="delete" onClick={this.deletePost}>
                         <DeleteIcon />
                     </IconButton> : null}
