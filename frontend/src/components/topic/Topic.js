@@ -17,7 +17,7 @@ export class Topic extends Component {
         }
     }
 
-    belongsToUser = () => {
+    componentDidMount = () => {
         let user = null;
         getCurrentUser()
             .then(data => {
@@ -100,8 +100,6 @@ export class Topic extends Component {
         const username = this.state.username;
         const title = this.state.title;
         const date = dtfPL.format(Date.parse(this.state.addDate));
-
-        this.belongsToUser();
 
         return <div className="Topic" ref="Topic">
             <article onClick={() => history.push("/forum/" + this.state.id)}>

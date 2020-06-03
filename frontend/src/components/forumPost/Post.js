@@ -16,7 +16,7 @@ export class Post extends Component {
         }
     }
 
-    belongsToUser = () => {
+    componentDidMount = () => {
         let user = null;
         getCurrentUser()
             .then(data => {
@@ -98,8 +98,6 @@ export class Post extends Component {
         const username = this.state.username;
         const content = this.state.content;
         const date = dtfPL.format(Date.parse(this.state.addDate));
-
-        this.belongsToUser();
 
         return <div className="PostForum" ref="PostForum">
             <article>
