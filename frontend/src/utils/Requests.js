@@ -101,3 +101,33 @@ export function addPostToTopic(post) {
     });
 }
 
+export function deleteTopic(id) {
+    return request({
+        url: API_BASE_URL + "/forum/topic/ " + id,
+        method: 'DELETE',
+    })
+}
+
+export function editTopic(topic) {
+    return request({
+        url: API_BASE_URL + "/forum/editTopic",
+        method: 'PUT',
+        body: JSON.stringify(topic)
+    })
+}
+
+export function deleteForumPost(id) {
+    return request({
+        url: API_BASE_URL + "/forum/forumPost/ " + id,
+        method: 'DELETE',
+    })
+}
+
+export function editForumPost(topic) {
+    return request({
+        url: API_BASE_URL + "/forum/editForumPost",
+        method: 'PUT',
+        body: JSON.stringify(topic)
+    })
+}
+
