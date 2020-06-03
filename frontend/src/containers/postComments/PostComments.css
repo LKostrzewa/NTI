@@ -3,17 +3,27 @@
     align-items: center;
     font-family: 'PT Sans', sans-serif;
     font-size: 13px;
+    position: relative;
     padding: 16px;
 
 }
 
 .Button {
     margin-left: 12px;
+    position: absolute;
+    right: 5px;
 
 }
+.newComment {
+    width: 70%;
+    margin-right: 40px;
+    position: relative;
+
+}
+
 .TopicAddComment{
     display: flex;
     padding: 16px;
-    width: 95%;
+    position: relative;
 }
 

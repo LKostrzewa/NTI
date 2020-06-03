@@ -35,7 +35,6 @@ export default class PostList extends Component {
 
         return (
             <div className="centered">
-                <h2>Posty: </h2>
                 {posts}
             </div>
         )
