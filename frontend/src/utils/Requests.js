@@ -79,6 +79,13 @@ export function addCommentToPost(comment) {
     });
 }
 
+export function deletePost(id) {
+    return request({
+        url: API_BASE_URL + "/posts/post/ " + id,
+        method: 'DELETE',
+    })
+}
+
 export function getTopicsList() {
     return request({
         url: API_BASE_URL + "/forum",
