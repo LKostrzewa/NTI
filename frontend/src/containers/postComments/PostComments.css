@@ -14,6 +14,13 @@
     right: 5px;
 
 }
+.newComment {
+    width: 70%;
+    margin-right: 40px;
+    position: relative;
+
+}
+
 .TopicAddComment{
     display: flex;
     padding: 16px;

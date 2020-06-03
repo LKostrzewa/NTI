@@ -80,7 +80,7 @@ export class PostComments extends Component {
                             {comments}
                         </div>
                         <div className="TopicAddComment">
-                            <input type="text" value={newComment} onChange={this.handleNewComment}/>
+                            <input className="newComment" type="text" value={newComment} onChange={this.handleNewComment}/>
                             <button className="Button" onClick={this.saveNewComment}>Dodaj komentarz</button>
                         </div>
                     </div>
