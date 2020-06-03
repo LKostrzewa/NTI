@@ -16,7 +16,8 @@ export class Post extends Component {
             lob: props.lob,
             description: props.description,
             comments: props.comments,
-            isUserTopic: false
+            isUserTopic: false,
+            currentUserName: null
         }
         this.deletePost = this.deletePost.bind(this);
     }
@@ -28,7 +29,8 @@ export class Post extends Component {
                 user = data;
             }).finally(() => {
             this.setState({
-                isUserTopic: this.state.username === user.username
+                isUserTopic: this.state.username === user.username,
+                currentUserName: user.username
             })
         });
     };
@@ -49,6 +51,8 @@ export class Post extends Component {
         const description = this.state.description;
         const comments = this.state.comments;
         const isUserTopic = this.state.isUserTopic;
+        const currentUserName = this.state.currentUserName;
+
 
         return <article className="Post" ref="Post">
             <header className="Post-header">
@@ -76,7 +80,7 @@ export class Post extends Component {
                 <label>{description}</label>
             </div>
             <div>
-               <PostComments postId={postId} comments={comments}/>
+               <PostComments postId={postId} comments={comments} currentUserName={currentUserName}/>
             </div>
         </article>;
     }

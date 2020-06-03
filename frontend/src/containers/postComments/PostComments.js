@@ -10,7 +10,8 @@ export class PostComments extends Component {
             postId: props.postId,
             comments: props.comments,
             showComments: false,
-            newComment: ''
+            newComment: '',
+            currentUserName: props.currentUserName
         }
 
         this.showComments = this.showComments.bind(this);
@@ -53,10 +54,12 @@ export class PostComments extends Component {
         const showComments = this.state.showComments;
         const numberOfQuestion = this.state.comments.length;
         const newComment = this.state.newComment;
+        const currentUserName = this.state.currentUserName;
+
         var comments = this.state.comments.map(function (c, index) {
             return (
                 <PostComment id={c.id} content={c.content} addDate={c.addDate}
-                             account={c.account}/>
+                             account={c.account} currentUserName={currentUserName}/>
             );
         });
         return (

@@ -86,6 +86,13 @@ export function deletePost(id) {
     })
 }
 
+export function deletePostComment(id) {
+    return request({
+        url: API_BASE_URL + "/posts/postComment/ " + id,
+        method: 'DELETE',
+    })
+}
+
 export function getTopicsList() {
     return request({
         url: API_BASE_URL + "/forum",
