@@ -105,13 +105,13 @@ class App extends Component {
                                 <Route path="/success"
                                        render={(props) => <Success
                                            currentUser={this.state.currentUser} {...props} />}/>
-                                <Route path="/registration">
-                                    <RegistrationForm/>
-                                </Route>
+                                <Route path="/registration"
+                                       render={(props) => <RegistrationForm
+                                           isAuthenticated={this.state.isAuthenticated} {...props} />}/>
+
                                 <Route path="/my-profile"
                                        render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
-                                                                   currentUser={this.state.currentUser} {...props}  />}>
-                                </Route>
+                                                                   currentUser={this.state.currentUser} {...props}  />}/>
                                 <Route path="/">
                                     <Home/>
                                 </Route>
