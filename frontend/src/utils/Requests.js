@@ -64,6 +64,13 @@ export function getCurrentUser() {
     });
 }
 
+export function getUserProfile(username) {
+    return request({
+        url: API_BASE_URL + "/accounts/" + username,
+        method: 'GET'
+    });
+}
+
 export function getPosts() {
     return request({
         url: API_BASE_URL + "/posts",

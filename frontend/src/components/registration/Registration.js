@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import 'antd/dist/antd.css'
 import './Registration.css'
 import {Button, Form, Input, notification} from 'antd'
@@ -6,7 +6,7 @@ import {checkEmailAvailability, checkUsernameAvailability, register} from "../..
 import history from "../../history"
 
 
-const RegistrationForm = () => {
+const RegistrationForm = (props) => {
     const [form] = Form.useForm();
     const [usernameValidationStatus, setUsernameValidationStatus] = useState('')
     const [usernameErrorMsg, setUsernameErrorMsg] = useState(null)
@@ -63,6 +63,12 @@ const RegistrationForm = () => {
                 })
         }
     }
+
+    useEffect(() => {
+        if (props.isAuthenticated) {
+            history.push("/success");
+        }
+    });
 
     return (
         <Form
