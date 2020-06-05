@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {getUserProfile} from '../../utils/Requests';
-import {Avatar} from 'antd';
-import {getAvatarColor} from '../../utils/Colors';
 import LoadingIndicator from '../../common/LoadingIndicator';
 import './Profile.css';
 import NotFound from '../../common/NotFound';
@@ -72,18 +70,12 @@ class Profile extends Component {
                 {
                     this.state.user ? (
                         <div className="user-profile">
-                            <div className="user-details">
-                                <div className="user-avatar">
-                                    <Avatar className="user-avatar-circle"
-                                            style={{backgroundColor: getAvatarColor(this.state.user.firstName)}}>
-                                        {this.state.user.firstName[0].toUpperCase()}
-                                    </Avatar>
-                                </div>
-                                <div className="user-summary">
+                            <div className="user-details-info">
+                                <div className="user-summary-info">
                                     <div
-                                        className="full-name">{this.state.user.firstName} {this.state.user.lastName}</div>
-                                    <div className="username">{this.state.user.username}</div>
-                                    <div className="email">{this.state.user.email}</div>
+                                        className="full-name-info">{this.state.user.firstName} {this.state.user.lastName}</div>
+                                    <div className="username-info">{this.state.user.username}</div>
+                                    <div className="email-info">{this.state.user.email}</div>
                                 </div>
                             </div>
                         </div>

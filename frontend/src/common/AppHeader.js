@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import './AppHeader.css';
-import {Dropdown, Layout, Menu} from 'antd';
+import {Avatar, Dropdown, Layout, Menu} from 'antd';
 import {DownOutlined, HomeOutlined, UserOutlined} from "@ant-design/icons";
+import {getAvatarColor} from "../utils/Colors";
 
 const Header = Layout.Header;
 
@@ -52,12 +53,12 @@ class AppHeader extends Component {
                     </div>
                     {this.props.currentUser !== null ?
                         <>
-                        <div className="app-title">
-                            <Link to="/postList">Post list</Link>
-                        </div>
                             <div className="app-title">
-                            <Link to="/forum"> Forum </Link>
-                        </div>
+                                <Link to="/postList">Post list</Link>
+                            </div>
+                            <div className="app-title">
+                                <Link to="/forum"> Forum </Link>
+                            </div>
                         </>
                         : null}
 
@@ -78,11 +79,21 @@ function ProfileDropdownMenu(props) {
     const dropdownMenu = (
         <Menu onClick={props.handleMenuClick} className="profile-dropdown-menu">
             <Menu.Item key="user-info" className="dropdown-item" disabled>
-                <div className="user-full-name-info">
-                    {props.currentUser.firstName + ' ' + props.currentUser.lastName}
-                </div>
-                <div className="username-info">
-                    @{props.currentUser.username}
+                <div className="user-details">
+                    <div className="user-avatar">
+                        <Avatar className="user-avatar-circle"
+                                style={{backgroundColor: getAvatarColor(props.currentUser.firstName)}}>
+                            {props.currentUser.firstName[0].toUpperCase()}
+                        </Avatar>
+                    </div>
+                    <div className="user-summary">
+                        <div className="full-name">
+                            {props.currentUser.firstName + ' ' + props.currentUser.lastName}
+                        </div>
+                        <div className="username">
+                            @{props.currentUser.username}
+                        </div>
+                    </div>
                 </div>
             </Menu.Item>
             <Menu.Divider/>
