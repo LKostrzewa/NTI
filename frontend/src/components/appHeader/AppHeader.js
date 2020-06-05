@@ -56,6 +56,17 @@ class AppHeader extends Component {
                     <div className="app-title">
                         <Link to="/">Insta App</Link>
                     </div>
+                    {this.props.currentUser !== null ?
+                        <>
+                        <div className="app-title">
+                            <Link to="/postList">Post list</Link>
+                        </div>
+                            <div className="app-title">
+                            <Link to="/forum"> Forum </Link>
+                        </div>
+                        </>
+                        : null}
+
                     <Menu
                         className="app-menu"
                         mode="horizontal"

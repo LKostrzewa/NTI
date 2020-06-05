@@ -17,17 +17,6 @@ export default class Success extends Component {
         if (this.state.currentUser) {
             return (
                 <div className="container">
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/postList">Post list</Link>
-                            </li>
-                            <li>
-                                <Link to="/forum"> Forum </Link>
-                            </li>
-                        </ul>
-                    </nav>
-
                     <h1> Siema {this.state.currentUser.username}</h1>
                 </div>
             )
