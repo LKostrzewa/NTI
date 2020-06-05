@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Form, Input} from "antd";
+import {Button, Form, Input, notification} from "antd";
 import "antd/dist/antd.css";
 import "./Login.css";
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
@@ -15,9 +15,15 @@ const LoginForm = (props) => {
                 props.onLogin();
             }).catch(error => {
             if (error.status === 401) {
-                console.log("Your username or password is incorrect. Please try again.", values);
+                notification.error({
+                    message: 'Polling App',
+                    description: 'Your Username or Password is incorrect. Please try again!'
+                });
             } else {
-                console.log("Something went wrong. Please try again.");
+                notification.error({
+                    message: 'Polling App',
+                    description: error.message || 'Sorry! Something went wrong. Please try again!'
+                });
             }
         })
     }
