@@ -2,11 +2,11 @@ package pl.lodz.p.it.insta.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.lodz.p.it.insta.entities.Account;
+import pl.lodz.p.it.insta.exceptions.ResourceNotFoundException;
 import pl.lodz.p.it.insta.security.UserDetailsImpl;
+import pl.lodz.p.it.insta.security.payloads.AccountDetails;
 import pl.lodz.p.it.insta.security.payloads.AccountSummary;
 import pl.lodz.p.it.insta.security.payloads.UserIdentityAvailability;
 import pl.lodz.p.it.insta.services.AccountService;
@@ -26,6 +26,15 @@ public class AccountController {
         UserDetailsImpl currentUser = (UserDetailsImpl) authentication.getPrincipal();
         return new AccountSummary(currentUser.getId(), currentUser.getUsername(),
                 currentUser.getFirstName(), currentUser.getLastName());
+    }
+
+    @GetMapping("/{username}")
+    public AccountDetails getUserProfile(@PathVariable(value = "username") String username) {
+        Account account = accountService.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "username", username));
+
+        return new AccountDetails(account.getFirstName(), account.getLastName(),
+                account.getUsername(), account.getEmail());
     }
 
     @GetMapping("/checkUsernameAvailability")

@@ -11,9 +11,10 @@ import Forum from "./containers/forum/Forum";
 import TopicPosts from "./containers/topicPosts/TopicPosts";
 import {Layout, notification} from "antd";
 import RegistrationForm from "./components/registration/Registration";
-import LoadingIndicator from "./components/loadingIndicator/LoadingIndicator";
-import AppHeader from "./components/appHeader/AppHeader";
+import LoadingIndicator from "./common/LoadingIndicator";
+import AppHeader from "./common/AppHeader";
 import NewTopic from "./containers/newTopic/NewTopic";
+import Profile from "./components/profile/Profile";
 
 const {Content} = Layout;
 
@@ -105,6 +106,9 @@ class App extends Component {
                                                currentUser={this.state.currentUser} {...props} />}/>
                                     <Route path="/registration">
                                         <RegistrationForm/>
+                                    </Route>
+                                    <Route path="/my-profile"
+                                           render={(props) => <Profile isAuthenticated={this.state.isAuthenticated} currentUser={this.state.currentUser} {...props}  />}>
                                     </Route>
                                     <Route path="/">
                                         <Home/>

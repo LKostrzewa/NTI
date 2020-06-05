@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import './AppHeader.css';
-import pollIcon from '../../poll.svg';
 import {Dropdown, Layout, Menu} from 'antd';
 import {DownOutlined, HomeOutlined, UserOutlined} from "@ant-design/icons";
 
@@ -26,11 +25,6 @@ class AppHeader extends Component {
                 <Menu.Item key="/">
                     <Link to="/">
                         <HomeOutlined className="nav-icon"/>
-                    </Link>
-                </Menu.Item>,
-                <Menu.Item>
-                    <Link>
-                        <img src={pollIcon} alt="poll" className="poll-icon"/>
                     </Link>
                 </Menu.Item>,
                 <Menu.Item key="/profile" className="profile-menu">
@@ -93,7 +87,7 @@ function ProfileDropdownMenu(props) {
             </Menu.Item>
             <Menu.Divider/>
             <Menu.Item key="profile" className="dropdown-item">
-                <Link to={`/users/${props.currentUser.username}`}>Profile</Link>
+                <Link to={`/my-profile`}>Profile</Link>
             </Menu.Item>
             <Menu.Item key="logout" className="dropdown-item">
                 Logout
