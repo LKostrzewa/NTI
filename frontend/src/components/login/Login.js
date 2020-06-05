@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Button, Form, Input, notification} from "antd";
 import "antd/dist/antd.css";
 import "./Login.css";
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import {login} from "../../utils/Requests";
 import {ACCESS_TOKEN} from "../../utils/Constants";
+import history from "../../history";
 
 const LoginForm = (props) => {
     const onFinish = values => {
@@ -27,6 +28,12 @@ const LoginForm = (props) => {
             }
         })
     }
+
+    useEffect(() => {
+        if (props.isAuthenticated) {
+            history.push("/success");
+        }
+    });
 
     return (
         <Form

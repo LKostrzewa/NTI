@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link, Route, Router, Switch} from "react-router-dom";
+import {Route, Router, Switch} from "react-router-dom";
 import "./App.css";
 import PostList from "./containers/postList/PostList"
 import LoginForm from "./components/login/Login";
@@ -88,32 +88,34 @@ class App extends Component {
                                onLogout={this.handleLogout}/>
                     <Content className="app-content">
                         <div className="container">
-                                <Switch>
-                                    <Route path="/postList">
-                                        <PostList/>
-                                    </Route>
-                                    <Route path="/forum/addTopic" >
-                                        <NewTopic/>
-                                    </Route>
-                                    <Route path="/forum/:id" render={(props) => <TopicPosts {...props}/>}/>
-                                    <Route path="/forum">
-                                        <Forum/>
-                                    </Route>
-                                    <Route path="/login"
-                                           render={(props) => <LoginForm onLogin={this.handleLogin} {...props} />}/>
-                                    <Route path="/success"
-                                           render={(props) => <Success
-                                               currentUser={this.state.currentUser} {...props} />}/>
-                                    <Route path="/registration">
-                                        <RegistrationForm/>
-                                    </Route>
-                                    <Route path="/my-profile"
-                                           render={(props) => <Profile isAuthenticated={this.state.isAuthenticated} currentUser={this.state.currentUser} {...props}  />}>
-                                    </Route>
-                                    <Route path="/">
-                                        <Home/>
-                                    </Route>
-                                </Switch>
+                            <Switch>
+                                <Route path="/postList">
+                                    <PostList/>
+                                </Route>
+                                <Route path="/forum/addTopic">
+                                    <NewTopic/>
+                                </Route>
+                                <Route path="/forum/:id" render={(props) => <TopicPosts {...props}/>}/>
+                                <Route path="/forum">
+                                    <Forum/>
+                                </Route>
+                                <Route path="/login"
+                                       render={(props) => <LoginForm onLogin={this.handleLogin}
+                                                                     isAuthenticated={this.state.isAuthenticated} {...props} />}/>
+                                <Route path="/success"
+                                       render={(props) => <Success
+                                           currentUser={this.state.currentUser} {...props} />}/>
+                                <Route path="/registration">
+                                    <RegistrationForm/>
+                                </Route>
+                                <Route path="/my-profile"
+                                       render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
+                                                                   currentUser={this.state.currentUser} {...props}  />}>
+                                </Route>
+                                <Route path="/">
+                                    <Home/>
+                                </Route>
+                            </Switch>
                         </div>
                     </Content>
                 </Router>
