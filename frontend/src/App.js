@@ -15,6 +15,7 @@ import LoadingIndicator from "./common/LoadingIndicator";
 import AppHeader from "./common/AppHeader";
 import NewTopic from "./containers/newTopic/NewTopic";
 import Profile from "./components/profile/Profile";
+import PrivateRoute from './common/PrivateRoute';
 
 const {Content} = Layout;
 
@@ -89,9 +90,8 @@ class App extends Component {
                     <Content className="app-content">
                         <div className="container">
                             <Switch>
-                                <Route path="/postList">
-                                    <PostList/>
-                                </Route>
+                                <PrivateRoute exact path="/postList" authenticated={this.state.isAuthenticated}
+                                              component={PostList}/>
                                 <Route path="/forum/addTopic">
                                     <NewTopic/>
                                 </Route>
@@ -99,20 +99,20 @@ class App extends Component {
                                 <Route path="/forum">
                                     <Forum/>
                                 </Route>
-                                <Route path="/login"
+                                <Route exact path="/login"
                                        render={(props) => <LoginForm onLogin={this.handleLogin}
                                                                      isAuthenticated={this.state.isAuthenticated} {...props} />}/>
-                                <Route path="/success"
+                                <Route exact path="/success"
                                        render={(props) => <Success
                                            currentUser={this.state.currentUser} {...props} />}/>
-                                <Route path="/registration"
+                                <Route exact path="/registration"
                                        render={(props) => <RegistrationForm
                                            isAuthenticated={this.state.isAuthenticated} {...props} />}/>
 
-                                <Route path="/my-profile"
+                                <Route exact path="/my-profile"
                                        render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
                                                                    currentUser={this.state.currentUser} {...props}  />}/>
-                                <Route path="/">
+                                <Route exact path="/">
                                     <Home/>
                                 </Route>
                             </Switch>
