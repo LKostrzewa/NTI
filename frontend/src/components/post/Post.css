@@ -9,7 +9,7 @@
 }
 .Post-header {
     position: relative;
-    background-color: #FBCA17;
+    background-color: #FEFE2E;
 }
 .Post-user {
     display: flex;
@@ -39,7 +39,7 @@
 .Post-description {
     padding: 16px;
     font-family: 'PT Sans', sans-serif;
-    background-color: #FEFE2E;
+    background-color: #FBCA17;
     color: #333309;
 }
 

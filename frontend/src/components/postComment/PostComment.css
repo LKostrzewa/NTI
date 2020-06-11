@@ -1,7 +1,7 @@
 .PostComment {
     background-color: #FEFE2E;
 }
-.PostComment:nth-child(odd) {
+.PostComment:nth-child(even) {
     background-color: #FBCA17;
 
 }

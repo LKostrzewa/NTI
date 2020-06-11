@@ -6,7 +6,7 @@
     position: relative;
     padding: 16px;
     color: #333309;
-    background-color: #FEFE2E;
+    background-color: #FBCA17;
 }
 
 .Button {
@@ -22,7 +22,8 @@
     width: 70%;
     margin-right: 40px;
     position: relative;
-
+    color: #333309;
+    background-color: #F6E5CC;
 }
 
 .TopicAddComment{
@@ -30,6 +31,6 @@
     padding: 16px;
     position: relative;
     color: #333309;
-    background-color: #FEFE2E;
+    background-color: #FBCA17;
 }
 

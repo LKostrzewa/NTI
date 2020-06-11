@@ -41,7 +41,7 @@ export class Post extends Component {
             .finally(() => {
                 window.location.reload()
             });
-        return false;
+
     };
 
     render() {
