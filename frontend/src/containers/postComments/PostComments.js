@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {PostComment} from "../../components/postComment/PostComment";
 import './PostComments.css'
 import {addCommentToPost} from "../../utils/Requests";
+import ServerError from "../../common/ServerError";
 
 export class PostComments extends Component {
     constructor(props) {
@@ -45,7 +46,11 @@ export class PostComments extends Component {
             "postId": postId,
             "content": newComment
         };
-        addCommentToPost(newCommentJson).finally(
+        addCommentToPost(newCommentJson)
+            .catch(e => {
+                console.log(e);
+                alert("Coś poszło nie tak")
+            }).finally(
             () => {
             window.location.reload()  });
 

@@ -35,10 +35,12 @@ export class PostComment extends Component {
 
     deletePostComment = (event) => {
         deletePostComment(this.state.id)
-            .finally(() => {
+            .catch(e => {
+            console.log(e);
+            alert("Coś poszło nie tak")
+             }).finally(() => {
                 window.location.reload()
             });
-        return false;
     };
 
     render() {
