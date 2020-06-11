@@ -16,6 +16,10 @@ import AppHeader from "./components/appHeader/AppHeader";
 import NewTopic from "./containers/newTopic/NewTopic";
 import NewPost from "./containers/newPost/NewPost";
 
+import {Provider} from 'react-redux';
+import store from "./store";
+import ImageUploader from "./components/ImageUploader";
+
 const {Content} = Layout;
 
 class App extends Component {
@@ -92,8 +96,13 @@ class App extends Component {
                                     <Route path="/postList">
                                         <PostList/>
                                     </Route>
+                                    {/*<Route path="/posts/addPost">*/}
+                                    {/*    <NewPost/>*/}
+                                    {/*</Route>*/}
                                     <Route path="/posts/addPost">
-                                        <NewPost/>
+                                    <Provider store={store}>
+                                        <ImageUploader/>
+                                    </Provider>
                                     </Route>
                                     <Route path="/forum/addTopic" >
                                         <NewTopic/>
