@@ -9,8 +9,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import {uploadImage} from "../actions/uploadActions";
-import history from "../history";
+import {uploadImage} from "../../actions/uploadActions";
+import history from "../../history";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -79,9 +79,12 @@ const useStyles = makeStyles((theme) => ({
     },
     imageChangeButton: {
         marginTop: 20,
-        marginLeft: 130
+        marginLeft: 140
     },
-    imageName: {
+    imageBackButton: {
+        marginLeft: 140
+    },
+    description: {
         marginTop: 20
     },
     finalText: {
@@ -90,13 +93,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ImageUploader = (props) => {
+const AddPost = (props) => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
     const [imagePreview, setImagePreview] = useState(null);
     const [imageData, setImageData] = useState(null);
-    const [imageName, setImageName] = useState("");
+    const [description, setDescription] = useState("");
     const {image} = useSelector(state => state.upload);
 
     const handleUploadClick = event => {
@@ -108,12 +111,12 @@ const ImageUploader = (props) => {
     };
 
     const uploadImageWithAdditionalData = () => {
-        imageData.append('imageName', imageName);
+        imageData.append('description', description);
         dispatch(uploadImage(imageData));
     };
 
     const handleChange = event => {
-        setImageName(event.target.value)
+        setDescription(event.target.value)
     };
 
     return (
@@ -145,18 +148,18 @@ const ImageUploader = (props) => {
                             className={classes.imageChangeButton}
                             component="span"
                         >
-                            Change Image
+                            Dodaj zdjęcie
                         </Button>
                     </label>
                     <TextField
                         fullWidth
-                        label="Image Name"
+                        label="Treść posta"
                         margin="dense"
                         name="name"
-                        className={classes.imageName}
+                        className={classes.description}
                         onChange={handleChange}
                         required
-                        value={imageName}
+                        value={description}
                         variant="outlined"
                     />
                     <Button
@@ -165,10 +168,10 @@ const ImageUploader = (props) => {
                         className={classes.imageChangeButton}
                         onClick={() => uploadImageWithAdditionalData()}
                     >
-                        Upload Image
+                        Dodaj Post
                     </Button>
-                    <Typography className={classes.finalText}>{image === null ? "Select An Image To Upload" : "Image Uploaded. Saved as " + image}</Typography>
-                    <button onClick={() => history.push("/postList")}>Powrót</button>
+                    <Typography className={classes.finalText}>{image === null ? "Wybierz zdjęcie oraz dodaj treść posta" : "Post został dodany " + image}</Typography>
+                    <button className={classes.imageBackButton} onClick={() => history.push("/postList")}>Powrót</button>
                 </Grid>
 
             </Grid>
@@ -176,4 +179,4 @@ const ImageUploader = (props) => {
     );
 };
 
-export default ImageUploader;
+export default AddPost;
