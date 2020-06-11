@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {PostComment} from "../../components/postComment/PostComment";
 import './PostComments.css'
+import {addCommentToPost} from "../../utils/Requests";
 
 export class PostComments extends Component {
     constructor(props) {
@@ -9,7 +10,8 @@ export class PostComments extends Component {
             postId: props.postId,
             comments: props.comments,
             showComments: false,
-            newComment: ''
+            newComment: '',
+            currentUserName: props.currentUserName
         }
 
         this.showComments = this.showComments.bind(this);
@@ -43,14 +45,8 @@ export class PostComments extends Component {
             "postId": postId,
             "content": newComment
         };
-        const response = fetch('http://localhost:8080/posts/addCommentToPost/', {
-            dataType: "json",
-            method: 'POST',
-            body: JSON.stringify(newCommentJson),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).finally(() =>  window.location.reload());
+        addCommentToPost(newCommentJson)
+            .finally(() =>  window.location.reload());
         return false;
     };
 
@@ -58,10 +54,12 @@ export class PostComments extends Component {
         const showComments = this.state.showComments;
         const numberOfQuestion = this.state.comments.length;
         const newComment = this.state.newComment;
+        const currentUserName = this.state.currentUserName;
+
         var comments = this.state.comments.map(function (c, index) {
             return (
                 <PostComment id={c.id} content={c.content} addDate={c.addDate}
-                             account={c.account}/>
+                             account={c.account} currentUserName={currentUserName}/>
             );
         });
         return (
@@ -82,8 +80,8 @@ export class PostComments extends Component {
                             {comments}
                         </div>
                         <div className="TopicAddComment">
-                            <input type="text" value={newComment} onChange={this.handleNewComment}/>
-                            <button onClick={this.saveNewComment}>Dodaj komentarz</button>
+                            <input className="newComment" type="text" value={newComment} onChange={this.handleNewComment}/>
+                            <button className="Button" onClick={this.saveNewComment}>Dodaj komentarz</button>
                         </div>
                     </div>
                 }

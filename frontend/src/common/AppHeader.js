@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import './AppHeader.css';
-import pollIcon from '../../poll.svg';
-import {Dropdown, Layout, Menu} from 'antd';
+import {Avatar, Dropdown, Layout, Menu} from 'antd';
 import {DownOutlined, HomeOutlined, UserOutlined} from "@ant-design/icons";
+import {getAvatarColor} from "../utils/Colors";
 
 const Header = Layout.Header;
 
@@ -26,11 +26,6 @@ class AppHeader extends Component {
                 <Menu.Item key="/">
                     <Link to="/">
                         <HomeOutlined className="nav-icon"/>
-                    </Link>
-                </Menu.Item>,
-                <Menu.Item>
-                    <Link>
-                        <img src={pollIcon} alt="poll" className="poll-icon"/>
                     </Link>
                 </Menu.Item>,
                 <Menu.Item key="/profile" className="profile-menu">
@@ -56,6 +51,17 @@ class AppHeader extends Component {
                     <div className="app-title">
                         <Link to="/">Insta App</Link>
                     </div>
+                    {this.props.currentUser !== null ?
+                        <>
+                            <div className="app-title">
+                                <Link to="/postList">Post list</Link>
+                            </div>
+                            <div className="app-title">
+                                <Link to="/forum"> Forum </Link>
+                            </div>
+                        </>
+                        : null}
+
                     <Menu
                         className="app-menu"
                         mode="horizontal"
@@ -73,16 +79,26 @@ function ProfileDropdownMenu(props) {
     const dropdownMenu = (
         <Menu onClick={props.handleMenuClick} className="profile-dropdown-menu">
             <Menu.Item key="user-info" className="dropdown-item" disabled>
-                <div className="user-full-name-info">
-                    {props.currentUser.firstName + ' ' + props.currentUser.lastName}
-                </div>
-                <div className="username-info">
-                    @{props.currentUser.username}
+                <div className="user-details">
+                    <div className="user-avatar">
+                        <Avatar className="user-avatar-circle"
+                                style={{backgroundColor: getAvatarColor(props.currentUser.firstName)}}>
+                            {props.currentUser.firstName[0].toUpperCase()}
+                        </Avatar>
+                    </div>
+                    <div className="user-summary">
+                        <div className="full-name">
+                            {props.currentUser.firstName + ' ' + props.currentUser.lastName}
+                        </div>
+                        <div className="username">
+                            @{props.currentUser.username}
+                        </div>
+                    </div>
                 </div>
             </Menu.Item>
             <Menu.Divider/>
             <Menu.Item key="profile" className="dropdown-item">
-                <Link to={`/users/${props.currentUser.username}`}>Profile</Link>
+                <Link to={`/my-profile`}>Profile</Link>
             </Menu.Item>
             <Menu.Item key="logout" className="dropdown-item">
                 Logout

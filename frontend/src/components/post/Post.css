@@ -6,7 +6,9 @@
     margin-left: 25%;
     margin-right: 25%;
 }
-
+.Post-header {
+    position: relative;
+}
 .Post-user {
     display: flex;
     padding: 16px;
@@ -31,6 +33,12 @@
 .Post-description {
     padding: 16px;
     font-family: 'PT Sans', sans-serif;
+}
+
+.Post-isUserTopic {
+    position: absolute !important;
+    right: 5px;
+    top: 5px;
 }
 
 

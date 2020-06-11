@@ -12,6 +12,10 @@
     font-size: 14px;
 }
 
+.Post-header {
+    position: relative;
+}
+
 .ContentPostComment {
     display: flex;
     padding: 2px;
@@ -20,4 +24,9 @@
     font-family: 'PT Sans', sans-serif;
     font-size: 13px;
 
+}
+.PostComment-isUserComment {
+    position: absolute !important;
+    right: 5px;
+    top: 0px;
 }

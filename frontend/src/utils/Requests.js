@@ -64,11 +64,40 @@ export function getCurrentUser() {
     });
 }
 
+export function getUserProfile(username) {
+    return request({
+        url: API_BASE_URL + "/accounts/" + username,
+        method: 'GET'
+    });
+}
+
 export function getPosts() {
     return request({
         url: API_BASE_URL + "/posts",
         method: 'GET',
     });
+}
+
+export function addCommentToPost(comment) {
+    return request({
+        url: API_BASE_URL + "/posts/addCommentToPost",
+        method: 'POST',
+        body: JSON.stringify(comment)
+    });
+}
+
+export function deletePost(id) {
+    return request({
+        url: API_BASE_URL + "/posts/post/ " + id,
+        method: 'DELETE',
+    })
+}
+
+export function deletePostComment(id) {
+    return request({
+        url: API_BASE_URL + "/posts/postComment/ " + id,
+        method: 'DELETE',
+    })
 }
 
 export function getTopicsList() {
@@ -101,12 +130,32 @@ export function addPostToTopic(post) {
     });
 }
 
-export function addPost(post) {
-    return request( {
-        url: API_BASE_URL + "/posts/addPost",
-        method: 'POST',
-        body: JSON.stringify(post)
+export function deleteTopic(id) {
+    return request({
+        url: API_BASE_URL + "/forum/topic/ " + id,
+        method: 'DELETE',
     })
-
 }
 
+export function editTopic(topic) {
+    return request({
+        url: API_BASE_URL + "/forum/editTopic",
+        method: 'PUT',
+        body: JSON.stringify(topic)
+    })
+}
+
+export function deleteForumPost(id) {
+    return request({
+        url: API_BASE_URL + "/forum/forumPost/ " + id,
+        method: 'DELETE',
+    })
+}
+
+export function editForumPost(topic) {
+    return request({
+        url: API_BASE_URL + "/forum/editForumPost",
+        method: 'PUT',
+        body: JSON.stringify(topic)
+    })
+}
