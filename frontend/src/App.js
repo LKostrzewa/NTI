@@ -17,6 +17,10 @@ import NewTopic from "./containers/newTopic/NewTopic";
 import Profile from "./components/profile/Profile";
 import PrivateRoute from './common/PrivateRoute';
 
+import {Provider} from 'react-redux';
+import store from "./store";
+import AddPost from "./containers/newPost/AddPost";
+
 const {Content} = Layout;
 
 class App extends Component {
@@ -88,13 +92,18 @@ class App extends Component {
                                currentUser={this.state.currentUser}
                                onLogout={this.handleLogout}/>
                     <Content className="app-content">
-                        <div className="container">
+                        <div className="container">                               
                             <Switch>
                                 <PrivateRoute exact path="/postList" authenticated={this.state.isAuthenticated}
                                               component={PostList}/>
                                 <Route path="/forum/addTopic">
                                     <NewTopic/>
                                 </Route>
+                                <Route path="/posts/addPost">
+                                <Provider store={store}>
+                                        <AddPost/>
+                                </Provider>
+                                </Route>    
                                 <Route path="/forum/:id" render={(props) => <TopicPosts {...props}/>}/>
                                 <Route path="/forum">
                                     <Forum/>

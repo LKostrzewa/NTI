@@ -159,4 +159,3 @@ export function editForumPost(topic) {
         body: JSON.stringify(topic)
     })
 }
-
