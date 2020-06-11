@@ -8,11 +8,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 export class Post extends Component {
     constructor(props) {
         super(props);
-        const date = props.addDate.replace('T',' ');
+        const dtfPL = new Intl.DateTimeFormat('PL', { year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit',minute: '2-digit'});
         this.state = {
             postId: props.postId,
             username: props.username,
-            addDate: date,
+            addDate: dtfPL.format(Date.parse(props.addDate)),
             lob: props.lob,
             description: props.description,
             comments: props.comments,
@@ -58,9 +59,8 @@ export class Post extends Component {
             <header className="Post-header">
                 <div className="Post-user">
                     <div className="Post-user-nickname">
-                        {username}, {addDate}
-
-
+                        <label>{username}</label>
+                        <label className="DateLabel">{addDate}</label>
                     </div>
 
                 </div>

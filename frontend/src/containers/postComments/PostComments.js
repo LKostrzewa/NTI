@@ -45,9 +45,9 @@ export class PostComments extends Component {
             "postId": postId,
             "content": newComment
         };
-        addCommentToPost(newCommentJson)
-            .finally(() =>  window.location.reload());
-        return false;
+        addCommentToPost(newCommentJson);
+
+
     };
 
     render() {

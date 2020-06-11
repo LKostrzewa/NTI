@@ -7,11 +7,12 @@ import {deletePostComment, getCurrentUser} from "../../utils/Requests";
 export class PostComment extends Component {
     constructor(props) {
         super(props);
-        const date = props.addDate.replace('T',' ');
+        const dtfPL = new Intl.DateTimeFormat('PL', { year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit',minute: '2-digit'});
         this.state = {
             id: props.id,
             content: props.content,
-            addDate: date,
+            addDate: dtfPL.format(Date.parse(props.addDate)),
             username: props.account.username,
             isUserComment: false
 
@@ -49,7 +50,9 @@ export class PostComment extends Component {
         return <article className="PostComment">
             <header className="Post-header">
                 <div className="TopicPostComment">
-                    {username}, {addDate}
+                    <label>{username}</label>
+                    <label className="DateLabel">{addDate}</label>
+
                 </div>
                 {isUserComment === true ?
                     <IconButton className="PostComment-isUserComment" aria-label="delete" onClick={this.deletePostComment}>

@@ -14,7 +14,10 @@
     padding: 16px;
     align-items: center;
 }
-
+.DateLabel {
+    font-weight: normal;
+    margin-left: 10px;
+}
 .Post-user-nickname {
     margin-left: 12px;
     font-family: 'PT Sans', sans-serif;
