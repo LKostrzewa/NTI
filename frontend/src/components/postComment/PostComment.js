@@ -48,7 +48,7 @@ export class PostComment extends Component {
         const isUserComment = this.state.isUserComment;
 
         return <article className="PostComment">
-            <header className="Post-header">
+            <header className="Post-header-dwa">
                 <div className="TopicPostComment">
                     <label>{username}</label>
                     <label className="DateLabel">{addDate}</label>

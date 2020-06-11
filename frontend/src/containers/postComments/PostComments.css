@@ -5,13 +5,17 @@
     font-size: 13px;
     position: relative;
     padding: 16px;
-
+    color: #333309;
+    background-color: #FEFE2E;
 }
 
 .Button {
     margin-left: 12px;
     position: absolute;
     right: 5px;
+    background-color: #F79502;
+    color: #333309;
+    border: 1px solid #333309;
 
 }
 .newComment {
@@ -25,5 +29,7 @@
     display: flex;
     padding: 16px;
     position: relative;
+    color: #333309;
+    background-color: #FEFE2E;
 }
 

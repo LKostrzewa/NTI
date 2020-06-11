@@ -1,5 +1,9 @@
 .PostComment {
-    border: 1px solid #e6e6e6;
+    background-color: #FEFE2E;
+}
+.PostComment:nth-child(odd) {
+    background-color: #FBCA17;
+
 }
 
 .TopicPostComment {
@@ -14,9 +18,11 @@
 .DateLabel {
     font-weight: normal;
     margin-left: 10px;
+    color: #333309;
 }
-.Post-header {
+.Post-header-dwa {
     position: relative;
+    color: #333309;
 }
 
 .ContentPostComment {
@@ -26,10 +32,13 @@
     margin-left: 12px;
     font-family: 'PT Sans', sans-serif;
     font-size: 13px;
+    color: #333309;
+
 
 }
 .PostComment-isUserComment {
     position: absolute !important;
     right: 5px;
     top: 0px;
+    color: #333309 !important;
 }

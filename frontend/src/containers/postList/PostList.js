@@ -25,6 +25,8 @@ export default class PostList extends Component {
             })
     };
 
+
+
     render() {
         var posts = this.state.posts.map(function (c, index) {
             return (
@@ -34,7 +36,7 @@ export default class PostList extends Component {
         });
 
         return (
-            <div className="centered">
+            <div className="Centered">
                 {posts}
             </div>
         )
