@@ -1,5 +1,5 @@
 .PostComment {
-    background-color: #FEFE2E;
+    background-color: #6594EB;
 }
 .PostComment:nth-child(even) {
     background-color: #FBCA17;
@@ -18,7 +18,7 @@
 .DateLabel {
     font-weight: normal;
     margin-left: 10px;
-    color: #333309;
+    color: #000000;
 }
 .Post-header-dwa {
     position: relative;

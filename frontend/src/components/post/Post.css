@@ -1,6 +1,6 @@
 .Post {
     border-radius: 3px;
-    border: 1px solid #333309;
+    border: 1px solid #000000;
     background-color: #fff;
     margin-bottom: 60px;
     margin-left: 25%;
@@ -9,7 +9,7 @@
 }
 .Post-header {
     position: relative;
-    background-color: #FEFE2E;
+    background-color: #6594EB;
 }
 .Post-user {
     display: flex;
@@ -24,7 +24,7 @@
     margin-left: 12px;
     font-family: 'PT Sans', sans-serif;
     font-weight: bold;
-    color: #333309;
+    color: #000000;
 }
 
 .Post-image-bg {
@@ -40,14 +40,14 @@
     padding: 16px;
     font-family: 'PT Sans', sans-serif;
     background-color: #FBCA17;
-    color: #333309;
+    color: #000000;
 }
 
 .Post-isUserTopic {
     position: absolute !important;
     right: 5px;
     top: 5px;
-    color: #333309 !important;
+    color: #000000 !important;
 }
 
 
