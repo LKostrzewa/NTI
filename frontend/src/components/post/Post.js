@@ -38,7 +38,11 @@ export class Post extends Component {
 
     deletePost = (event) => {
         deletePost(this.state.postId)
-            .finally(() => {
+            .catch(e => {
+                console.log(e);
+                if(e.status===500)
+                    alert("Coś poszło nie tak")
+            }).finally(() => {
                 window.location.reload()
             });
 

@@ -37,6 +37,7 @@ export class PostComment extends Component {
         deletePostComment(this.state.id)
             .catch(e => {
             console.log(e);
+            if(e.status===500)
             alert("Coś poszło nie tak")
              }).finally(() => {
                 window.location.reload()

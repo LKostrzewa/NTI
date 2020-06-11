@@ -6,14 +6,14 @@
     position: relative;
     padding: 16px;
     color: #000000;
-    background-color: #FBCA17;
+    background-color: #6594EB;
 }
 
 .Button {
     margin-left: 12px;
     position: absolute;
     right: 5px;
-    background-color: #F79502;
+    background-color: #9696EB;
     color: #000000;
     border: 1px solid #000000;
 
@@ -31,6 +31,6 @@
     padding: 16px;
     position: relative;
     color: #000000;
-    background-color: #FBCA17;
+    background-color: #6594EB;
 }
 

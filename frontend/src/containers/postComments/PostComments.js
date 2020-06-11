@@ -49,6 +49,7 @@ export class PostComments extends Component {
         addCommentToPost(newCommentJson)
             .catch(e => {
                 console.log(e);
+                if(e.status===500)
                 alert("Coś poszło nie tak")
             }).finally(
             () => {
