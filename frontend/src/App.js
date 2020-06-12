@@ -16,7 +16,7 @@ import AppHeader from "./common/AppHeader";
 import NewTopic from "./containers/newTopic/NewTopic";
 import Profile from "./components/profile/Profile";
 import PrivateRoute from './common/PrivateRoute';
-
+import EditUser from "./editUser/editUser";
 import {Provider} from 'react-redux';
 import store from "./store";
 import AddPost from "./containers/newPost/AddPost";
@@ -107,6 +107,9 @@ class App extends Component {
                                 <Route path="/forum/:id" render={(props) => <TopicPosts {...props}/>}/>
                                 <Route path="/forum">
                                     <Forum/>
+                                </Route>
+                                <Route path="/accounts/editUser">
+                                    <EditUser/>
                                 </Route>
                                 <Route exact path="/login"
                                        render={(props) => <LoginForm onLogin={this.handleLogin}
