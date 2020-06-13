@@ -1,4 +1,4 @@
-package pl.lodz.p.it.insta.security.payloads;
+package pl.lodz.p.it.insta.dtos;
 
 import lombok.Getter;
 import lombok.Setter;

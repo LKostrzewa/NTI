@@ -1,13 +1,17 @@
-package pl.lodz.p.it.insta.security.payloads;
+package pl.lodz.p.it.insta.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
-public class LoginRequest {
+@AllArgsConstructor
+@NoArgsConstructor
+public class LoginRequestDto {
     @NotBlank
     private String username;
 

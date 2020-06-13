@@ -1,6 +1,8 @@
-package pl.lodz.p.it.insta.security.payloads;
+package pl.lodz.p.it.insta.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.Email;
@@ -9,7 +11,9 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-public class SignUpRequest {
+@AllArgsConstructor
+@NoArgsConstructor
+public class SignUpRequestDto {
     @NotBlank
     private String username;
     @NotBlank
@@ -24,3 +28,4 @@ public class SignUpRequest {
     @Email
     private String email;
 }
+
