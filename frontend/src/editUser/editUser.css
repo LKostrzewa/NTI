@@ -1,4 +1,4 @@
-.registration-form {
+.edit-form {
     max-width: 500px;
     position: fixed;
     top: 50%;
@@ -6,20 +6,17 @@
     transform: translate(-50%, -50%);
 }
 
-.ant-form-item-label {
-    display: inline-block;
-    width: 140px;
-    text-align: right;
-}
 
-.registration-form-button {
+
+#edit {
+    margin: 30px;
+    display: block;
     text-align: center;
 }
 
-.login-link{
-    padding: 10px;
+#input {
+    text-align: center;
 }
 
-.ant-col.ant-form-item-label {
-    padding-bottom: 0;
-}
+
+

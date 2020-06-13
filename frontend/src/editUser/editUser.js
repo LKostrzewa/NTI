@@ -13,9 +13,9 @@ export default class EditUser extends Component {
 
             id: null,
             username: null,
-            firstName: null,
-            lastName: null,
-            email: null
+            firstName: "",
+            lastName: "",
+            email: ""
         }
 
     }
@@ -59,41 +59,41 @@ export default class EditUser extends Component {
         };
         editUser(editUserJson)
             .finally(() => {
+                history.push("/success")
                 window.location.reload()
             });
     };
 
+
+
+
     editForm = () => {
-        let editTopic = this.state.editTopic;
+        let isEnabled = this.state.email.length > 0 && this.state.firstName.length>0 && this.state.lastName.length>0
         return (
-            <div>{editTopic === false ?
+            <div>{
+
                 <div>
-                    <button onClick={this.editStart}>Edytuj</button>
-                    <button onClick={this.deleteForumTopic}> Usuń</button>
-                </div>
-                :
-                <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            Podaj nową Imie:
+                    <form onSubmit={this.handleSubmit} className="edit-form">
+                        <label id="edit">
+                            Podaj nowe imię:
                             <div>
-                                <textarea value={this.state.firstName} onChange={this.handleFirstNameChange}/>
+                                <input value={this.state.firstName} onChange={this.handleFirstNameChange}/>
                             </div>
                         </label>
-                        <label>
-                            Podaj nową Drugie Imie:
+                        <label id="edit">
+                            Podaj nowe drugie imię:
                             <div>
-                                <textarea value={this.state.lastName} onChange={this.handleLastNameChange}/>
+                                <input value={this.state.lastName} onChange={this.handleLastNameChange}/>
                             </div>
                         </label>
-                        <label>
-                            Podaj nową Email:
+                        <label id="edit">
+                            Podaj nowy email:
                             <div>
-                                <textarea value={this.state.email} onChange={this.handleEmailChange}/>
+                                <input value={this.state.email} onChange={this.handleEmailChange}/>
                             </div>
                         </label>
-                        <div>
-                            <input type="submit" value="Edytuj"/>
+                        <div id="input">
+                            <input disabled={!isEnabled} className="registration-form-button" type="submit" value="Edytuj"/>
                         </div>
                     </form>
 
@@ -104,30 +104,8 @@ export default class EditUser extends Component {
 
 
     render() {
-
-
-        const username = this.state.username;
-        const firstName = this.state.firstName;
-        const lastName = this.state.lastName;
-        const id = this.state.id;
-        const email = this.state.email
-
-
         return <div className="Topic" ref="Topic">
-            <article>
-                <header>
-                    <div className="Topic-user">
-                        {username} {firstName} {lastName} {id} {email}
-                        <span className="Topic-date">
-
-                        </span>
-                    </div>
-                </header>
-                <div className="Topic-title">
-
-                </div>
-            </article>
-            { this.editForm()}
+            {this.editForm()}
         </div>
     }
 
