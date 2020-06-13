@@ -1,6 +1,5 @@
 package pl.lodz.p.it.insta.dtos;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class NewCommentDto {
-    private long postId;
+public class NewForumPostDto {
     private String content;
+    private long topicId;
 }

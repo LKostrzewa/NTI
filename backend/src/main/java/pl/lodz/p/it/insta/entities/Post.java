@@ -1,8 +1,8 @@
 package pl.lodz.p.it.insta.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ import java.util.Collection;
 @Entity
 @Getter
 @Setter
-public class Post implements Comparable<Post>{
+public class Post implements Comparable<Post> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +24,8 @@ public class Post implements Comparable<Post>{
     private Account account;
     //location to potem bajerka
 
-    @OneToMany (mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    @Lazy(false)
     private Collection<Comment> comments = new ArrayList<>();
 
     @Override
