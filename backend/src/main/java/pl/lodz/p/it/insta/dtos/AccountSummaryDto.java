@@ -1,17 +1,17 @@
-package pl.lodz.p.it.insta.security.payloads;
+package pl.lodz.p.it.insta.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AccountSummary {
+public class AccountSummaryDto {
     private Long id;
     private String username;
     private String firstName;
     private String lastName;
 
-    public AccountSummary(Long id, String username, String firstName, String lastName) {
+    public AccountSummaryDto(Long id, String username, String firstName, String lastName) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
