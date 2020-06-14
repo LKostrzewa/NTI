@@ -17,9 +17,9 @@ export default class Success extends Component {
         if (this.state.currentUser) {
             return (
                 <div className="container">
-                    <h1> Siema {this.state.currentUser.username}</h1>
+                    <h1> Witamy na naszym portalu {this.state.currentUser.username}</h1>
                 </div>
             )
-        } else return <h1> Log in... </h1>
+        } else return <h1> Zaloguj się... </h1>
     }
 }

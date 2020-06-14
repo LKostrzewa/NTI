@@ -11,7 +11,7 @@ class ServerError extends Component {
                     500
                 </h1>
                 <div className="server-error-desc">
-                    Oops! Something went wrong at our Server. Why don't you go back?
+                    Ups! Awaria serwera. Proszę wrócić na stronę główną
                 </div>
                 <Link to="/"><Button className="server-error-go-back-btn" type="primary" size="large">Go
                     Back</Button></Link>

@@ -63,7 +63,7 @@ class App extends Component {
         this.loadCurrentUser();
     }
 
-    handleLogout(redirectTo = "/", notificationType = "success", description = "You're successfully logged out.") {
+    handleLogout(redirectTo = "/", notificationType = "success", description = "Udane wylogowanie") {
         localStorage.removeItem(ACCESS_TOKEN);
         this.setState({
             currentUser: null,
@@ -74,8 +74,8 @@ class App extends Component {
 
     handleLogin() {
         notification.success({
-            message: "App",
-            description: "You've successfully logged in.",
+            message: "Witamy",
+            description: "Udane zalogowanie",
         });
         this.loadCurrentUser();
         history.push("/success");

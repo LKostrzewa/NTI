@@ -17,13 +17,13 @@ const LoginForm = (props) => {
             }).catch(error => {
             if (error.status === 401) {
                 notification.error({
-                    message: 'Polling App',
-                    description: 'Your Username or Password is incorrect. Please try again!'
+                    message: 'Niepowodzenie',
+                    description: 'Podano nieprawidłowy login lub hasło. Proszę spróbować jeszcze raz!'
                 });
             } else {
                 notification.error({
-                    message: 'Polling App',
-                    description: error.message || 'Sorry! Something went wrong. Please try again!'
+                    message: 'Niepowodzenie',
+                    description: error.message || 'Wystąpił błąd. Proszę spróbować jeszcze raz'
                 });
             }
         })
@@ -46,14 +46,14 @@ const LoginForm = (props) => {
                 rules={[
                     {
                         required: true,
-                        message: "Please enter your username"
+                        message: "Proszę podać login"
                     }
                 ]}
             >
                 <Input
                     prefix={<UserOutlined className="site-form-item-icon"/>}
                     type="text"
-                    placeholder="Username"/>
+                    placeholder="Login"/>
             </Form.Item>
 
             <Form.Item
@@ -61,22 +61,22 @@ const LoginForm = (props) => {
                 rules={[
                     {
                         required: true,
-                        message: "Please enter your password"
+                        message: "Proszę podać hasło"
                     }
                 ]}
             >
                 <Input
                     prefix={<LockOutlined className="site-form-item-icon"/>}
                     type="password"
-                    placeholder="Password"
+                    placeholder="Hasło"
                 />
             </Form.Item>
 
             <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
-                    Log in
+                    Zaloguj
                 </Button>
-                Don't have an account? <a href="../registration">Sign up</a>
+                Nie masz konta? <a href="../registration">Zarejestruj się</a>
             </Form.Item>
         </Form>
     );

@@ -40,7 +40,7 @@ export class Post extends Component {
         deletePost(this.state.postId)
             .catch(e => {
                 console.log(e);
-                if(e.status===500)
+                if(e.status===404)
                     alert("Coś poszło nie tak")
             }).finally(() => {
                 window.location.reload()

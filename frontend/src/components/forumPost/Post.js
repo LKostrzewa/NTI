@@ -58,6 +58,10 @@ export class Post extends Component {
             "postId": this.state.id
         };
         editForumPost(editPostJson)
+            .catch(e => {
+                console.log(e);
+                if(e.status===404)
+                    alert("Coś poszło nie tak")})
             .finally(() => {
                 window.location.reload()
             });

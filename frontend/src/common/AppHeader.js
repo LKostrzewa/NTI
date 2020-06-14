@@ -49,12 +49,12 @@ class AppHeader extends Component {
             <Header className="app-header">
                 <div className="container">
                     <div className="app-title">
-                        <Link to="/">Insta App</Link>
+                        <Link to="/">Strona główna</Link>
                     </div>
                     {this.props.currentUser !== null ?
                         <>
                             <div className="app-title">
-                                <Link to="/postList">Post list</Link>
+                                <Link to="/postList">Posty</Link>
                             </div>
                             <div className="app-title">
                                 <Link to="/forum"> Forum </Link>
@@ -62,7 +62,9 @@ class AppHeader extends Component {
                             <div className="app-title">
                                 <Link to="/accounts/editUser"> Edytuj konto </Link>
                             </div>
-
+                            <div className="app-title">
+                                <Link to="/posts/addPost"> Dodaj nowy post </Link>
+                            </div>
                         </>
                         : null}
 
@@ -102,7 +104,7 @@ function ProfileDropdownMenu(props) {
             </Menu.Item>
             <Menu.Divider/>
             <Menu.Item key="profile" className="dropdown-item">
-                <Link to={`/my-profile`}>Profile</Link>
+                <Link to={`/my-profile`}>Twoje konto</Link>
             </Menu.Item>
             <Menu.Item key="logout" className="dropdown-item">
                 Logout
