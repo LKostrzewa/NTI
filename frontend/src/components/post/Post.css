@@ -1,24 +1,30 @@
 .Post {
     border-radius: 3px;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #000000;
     background-color: #fff;
     margin-bottom: 60px;
     margin-left: 25%;
     margin-right: 25%;
+
 }
 .Post-header {
     position: relative;
+    background-color: #6594EB;
 }
 .Post-user {
     display: flex;
     padding: 16px;
     align-items: center;
 }
-
+.DateLabel {
+    font-weight: normal;
+    margin-left: 10px;
+}
 .Post-user-nickname {
     margin-left: 12px;
     font-family: 'PT Sans', sans-serif;
     font-weight: bold;
+    color: #000000;
 }
 
 .Post-image-bg {
@@ -33,12 +39,15 @@
 .Post-description {
     padding: 16px;
     font-family: 'PT Sans', sans-serif;
+    background-color: #6594EB;
+    color: #000000;
 }
 
 .Post-isUserTopic {
     position: absolute !important;
     right: 5px;
     top: 5px;
+    color: #000000 !important;
 }
 
 

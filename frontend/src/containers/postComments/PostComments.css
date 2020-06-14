@@ -5,25 +5,32 @@
     font-size: 13px;
     position: relative;
     padding: 16px;
-
+    color: #000000;
+    background-color: #6594EB;
 }
 
 .Button {
     margin-left: 12px;
     position: absolute;
     right: 5px;
+    background-color: #9696EB;
+    color: #000000;
+    border: 1px solid #000000;
 
 }
 .newComment {
     width: 70%;
     margin-right: 40px;
     position: relative;
-
+    color: #000000;
+    background-color: #FFFFFF;
 }
 
 .TopicAddComment{
     display: flex;
     padding: 16px;
     position: relative;
+    color: #000000;
+    background-color: #6594EB;
 }
 

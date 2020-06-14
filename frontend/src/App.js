@@ -94,7 +94,7 @@ class App extends Component {
                     <Content className="app-content">
                         <div className="container">                               
                             <Switch>
-                                <PrivateRoute exact path="/postList" authenticated={this.state.isAuthenticated}
+                                <Route exact path="/postList" authenticated={this.state.isAuthenticated}
                                               component={PostList}/>
                                 <Route path="/forum/addTopic">
                                     <NewTopic/>
