@@ -59,6 +59,10 @@ class AppHeader extends Component {
                             <div className="app-title">
                                 <Link to="/forum"> Forum </Link>
                             </div>
+                            <div className="app-title">
+                                <Link to="/accounts/editUser"> Edytuj konto </Link>
+                            </div>
+
                         </>
                         : null}
 

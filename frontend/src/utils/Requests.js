@@ -159,3 +159,11 @@ export function editForumPost(topic) {
         body: JSON.stringify(topic)
     })
 }
+
+export function editUser(editUserRequest) {
+    return request({
+        url: API_BASE_URL + "/accounts/editUser",
+        method: 'PUT',
+        body: JSON.stringify(editUserRequest)
+    });
+}
