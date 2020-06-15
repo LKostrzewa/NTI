@@ -39,7 +39,6 @@ export default class PostList extends Component {
                 <span className="PostList-addButton">
                     <button onClick={() => history.push("/posts/addPost")}>Dodaj nowy POST</button>
                 </span>
-                <h2>Posty: </h2>
                 {posts}
             </div>
         )
