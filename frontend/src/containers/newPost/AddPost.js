@@ -114,7 +114,6 @@ const AddPost = (props) => {
     const uploadImageWithAdditionalData = () => {
         imageData.append('description', description);
         dispatch(uploadImage(imageData));
-        //history.push("/postList");
     };
 
     const handleChange = event => {

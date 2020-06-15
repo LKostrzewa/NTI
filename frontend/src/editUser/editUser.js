@@ -10,8 +10,6 @@ export default class EditUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
-            username: null,
             firstName: "",
             lastName: "",
             email: ""
@@ -26,8 +24,6 @@ export default class EditUser extends Component {
                 user = data;
             }).finally(() => {
             this.setState({
-
-                username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email:user.email
@@ -50,7 +46,6 @@ export default class EditUser extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const editUserJson = {
-            "username": this.state.username,
             "firstName": this.state.firstName,
             "lastName": this.state.lastName,
             "email" : this.state.email
