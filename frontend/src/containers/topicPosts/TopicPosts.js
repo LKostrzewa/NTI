@@ -89,8 +89,8 @@ export default class TopicPosts extends Component {
                 {posts}
                 {addPost === false ?
                     <div>
-                        <button onClick={() => history.push("/forum")}>Powrót</button>
-                        <button onClick={this.addNewPost}>Dodaj nowy post</button>
+                        <button onClick={() => history.push("/forum")} className="Topic-addButton">Powrót</button>
+                        <button onClick={this.addNewPost} className="Topic-addButton">Dodaj nowy post</button>
                     </div>
                     :
                     <div>
@@ -102,10 +102,10 @@ export default class TopicPosts extends Component {
                               </div>
                             </label>
                             <div>
-                                <input type="submit" value="Dodaj" />
+                                <input type="submit" value="Dodaj" className="Topic-addButton"/>
                             </div>
                         </form>
-                        <button onClick={this.cancelAdd}>Powrót</button>
+                        <button onClick={this.cancelAdd} className="Topic-addButton">Powrót</button>
                     </div>
                 }
             </div>

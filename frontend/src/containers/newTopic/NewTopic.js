@@ -35,10 +35,10 @@ export default class NewTopic extends Component {
               </div>
             </label>
             <div>
-                <input type="submit" value="Dodaj" />
+                <input type="submit" value="Dodaj" className="Forum-addButton" />
             </div>
           </form>
-            <button onClick={() => history.push("/forum")}>Powrót</button>
+            <button className="Forum-addButton" onClick={() => history.push("/forum")}>Powrót</button>
         </div>
     );
   }

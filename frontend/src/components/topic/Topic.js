@@ -69,8 +69,8 @@ export class Topic extends Component {
         return (
             <div>{editTopic === false ?
                 <div>
-                    <button onClick={this.editStart}>Edytuj</button>
-                    <button onClick={this.deleteForumTopic}> Usuń</button>
+                    <button onClick={this.editStart} className="Forum-addButton">Edytuj</button>
+                    <button onClick={this.deleteForumTopic} className="Forum-addButton"> Usuń</button>
                 </div>
                 :
                 <div>
@@ -82,10 +82,10 @@ export class Topic extends Component {
                             </div>
                         </label>
                         <div>
-                            <input type="submit" value="Edytuj"/>
+                            <input type="submit" value="Edytuj" className="Forum-addButton"/>
                         </div>
                     </form>
-                    <button onClick={this.cancelEdit}>Powrót</button>
+                    <button onClick={this.cancelEdit} className="Forum-addButton">Powrót</button>
                 </div>
             }</div>
         )

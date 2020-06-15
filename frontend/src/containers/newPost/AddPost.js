@@ -82,7 +82,8 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 140
     },
     imageBackButton: {
-        marginLeft: 140
+        marginLeft: 140,
+        backgroundColor: '#9696EB'
     },
     description: {
         marginTop: 20
@@ -113,6 +114,7 @@ const AddPost = (props) => {
     const uploadImageWithAdditionalData = () => {
         imageData.append('description', description);
         dispatch(uploadImage(imageData));
+        //history.push("/postList");
     };
 
     const handleChange = event => {

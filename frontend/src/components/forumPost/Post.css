@@ -11,3 +11,7 @@
 .PostForum-date {
     float: right;
 }
+
+.PostForum-addBtn {
+    background-color: #9696EB;
+}

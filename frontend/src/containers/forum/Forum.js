@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Topic} from "../../components/topic/Topic";
 import {getTopicsList} from "../../utils/Requests";
 import history from "../../history";
+import './Forum.css';
 
 export default class Forum extends Component {
     constructor(props) {
@@ -36,8 +37,8 @@ export default class Forum extends Component {
             <div className="centered">
                 <h2>Tematy: </h2>
                 {topics}
-                <span className="Forum-addButton">
-                    <button onClick={() => history.push("/forum/addTopic")}>Dodaj nowy temat</button>
+                <span className="Forum-span">
+                    <button className="Forum-addButton" onClick={() => history.push("/forum/addTopic")}>Dodaj nowy temat</button>
                 </span>
             </div>
         )

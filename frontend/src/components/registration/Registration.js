@@ -203,7 +203,7 @@ const RegistrationForm = (props) => {
 
             <Form.Item>
                 <Button type="primary" htmlType="submit" className="registration-form-button">
-                    Register
+                    Zarejestruj
                 </Button>
                 <text className="login-link">Masz już konto? <a href="../">Zaloguj się</a></text>
             </Form.Item>

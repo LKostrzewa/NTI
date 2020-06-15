@@ -72,8 +72,8 @@ export class Post extends Component {
         return (
             <div>{editPost === false ?
                 <div>
-                    <button onClick={this.editStart}>Edytuj</button>
-                    <button onClick={this.deletePost}> Usuń</button>
+                    <button onClick={this.editStart} className="PostForum-addBtn">Edytuj</button>
+                    <button onClick={this.deletePost} className="PostForum-addBtn"> Usuń</button>
                 </div>
                 :
                 <div>
@@ -85,10 +85,10 @@ export class Post extends Component {
                             </div>
                         </label>
                         <div>
-                            <input type="submit" value="Edytuj"/>
+                            <input type="submit" value="Edytuj" className="PostForum-addBtn"/>
                         </div>
                     </form>
-                    <button onClick={this.cancelEdit}>Powrót</button>
+                    <button onClick={this.cancelEdit} className="PostForum-addBtn">Powrót</button>
                 </div>
             }</div>
         )
