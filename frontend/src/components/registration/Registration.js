@@ -22,14 +22,14 @@ const RegistrationForm = (props) => {
         register(registrationRequest)
             .then(() => {
                 notification.success({
-                    message: "App",
-                    description: "You've successfully registered. You may log in now."
+                    message: "Sukces",
+                    description: "Udana rejestracja. Możesz się teraz zalogować."
                 });
                 history.push("/login")
             }).catch(error => {
             notification.error({
-                message: "App",
-                description: error.message || "Sorry. Something went wrong. Please try again."
+                message: "Niepowodzenie",
+                description: error.message || "Wystąpił błąd. Proszę spróbować jeszcze raz"
             })
         })
     }
@@ -43,7 +43,7 @@ const RegistrationForm = (props) => {
                         setUsernameErrorMsg(null)
                     } else {
                         setUsernameValidationStatus("error");
-                        setUsernameErrorMsg("Username is already taken");
+                        setUsernameErrorMsg("Ten login jest już zajęty");
                     }
                 })
         }
@@ -58,7 +58,7 @@ const RegistrationForm = (props) => {
                         setEmailErrorMsg(null)
                     } else {
                         setEmailValidationStatus("error")
-                        setEmailErrorMsg("E-mail address is already taken")
+                        setEmailErrorMsg("Ten email jest już zajęty")
                     }
                 })
         }
@@ -80,7 +80,7 @@ const RegistrationForm = (props) => {
             scrollToFirstError
         >
             <Form.Item
-                label="Username"
+                label="Login"
                 validateStatus={usernameValidationStatus}
                 help={usernameErrorMsg}
                 name="username"
@@ -96,7 +96,7 @@ const RegistrationForm = (props) => {
                                 return Promise.resolve()
                             } else {
                                 setUsernameValidationStatus("error")
-                                setUsernameErrorMsg("Username is required")
+                                setUsernameErrorMsg("Login jest wymagany")
                                 return Promise.reject('')
                             }
                         }
@@ -110,12 +110,12 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item
-                label="First Name"
+                label="Imię"
                 name="firstName"
                 rules={[
                     {
                         required: true,
-                        message: "First Name is required"
+                        message: "Imię jest wymagane"
                     }
                 ]}
             >
@@ -123,12 +123,12 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item
-                label="Last Name"
+                label="Nazwisko"
                 name="lastName"
                 rules={[
                     {
                         required: true,
-                        message: "Last Name is required"
+                        message: "Nazwisko jest wymagane"
                     }
                 ]}
             >
@@ -152,7 +152,7 @@ const RegistrationForm = (props) => {
                                 return Promise.resolve()
                             } else {
                                 setEmailValidationStatus("error")
-                                setEmailErrorMsg("E-mail address is required")
+                                setEmailErrorMsg("E-mail jest wymagany")
                                 return Promise.reject('')
                             }
                         }
@@ -166,13 +166,13 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item
-                label="Password"
+                label="Hasło"
                 name="password"
                 hasFeedback
                 rules={[
                     {
                         required: true,
-                        message: "Password is required"
+                        message: "Hasło jest wymagane"
                     }
                 ]}
             >
@@ -180,20 +180,20 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item
-                label="Confirm Password"
+                label="Potwierdź hasło"
                 name="confirm"
                 dependencies={["password"]}
                 hasFeedback
                 rules={[
                     {
                         required: true,
-                        message: "Password confirmation is required"
+                        message: "Potwierdzenie hasła jest wymagane"
                     },
                     ({getFieldValue}) => ({
                         validator(rule, value) {
                             if (!value || getFieldValue("password") === value) {
                                 return Promise.resolve()
-                            } else return Promise.reject("Passwords do not match")
+                            } else return Promise.reject("Hasła nie są takie same")
                         }
                     })
                 ]}
@@ -205,7 +205,7 @@ const RegistrationForm = (props) => {
                 <Button type="primary" htmlType="submit" className="registration-form-button">
                     Register
                 </Button>
-                <text className="login-link">Already have an account? <a href="../login">Login</a></text>
+                <text className="login-link">Masz już konto? <a href="../">Zaloguj się</a></text>
             </Form.Item>
         </Form>
     )

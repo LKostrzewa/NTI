@@ -23,24 +23,10 @@ class AppHeader extends Component {
         let menuItems;
         if (this.props.currentUser) {
             menuItems = [
-                <Menu.Item key="/">
-                    <Link to="/">
-                        <HomeOutlined className="nav-icon"/>
-                    </Link>
-                </Menu.Item>,
                 <Menu.Item key="/profile" className="profile-menu">
                     <ProfileDropdownMenu
                         currentUser={this.props.currentUser}
                         handleMenuClick={this.handleMenuClick}/>
-                </Menu.Item>
-            ];
-        } else {
-            menuItems = [
-                <Menu.Item key="/login">
-                    <Link to="/login">Login</Link>
-                </Menu.Item>,
-                <Menu.Item key="/registration">
-                    <Link to="/registration">Sign up</Link>
                 </Menu.Item>
             ];
         }
@@ -48,21 +34,17 @@ class AppHeader extends Component {
         return (
             <Header className="app-header">
                 <div className="container">
-                    <div className="app-title">
-                        <Link to="/">Insta App</Link>
-                    </div>
                     {this.props.currentUser !== null ?
                         <>
                             <div className="app-title">
-                                <Link to="/postList">Post list</Link>
+                                <Link to="/postList">Posty</Link>
                             </div>
                             <div className="app-title">
                                 <Link to="/forum"> Forum </Link>
                             </div>
                             <div className="app-title">
-                                <Link to="/accounts/editUser"> Edytuj konto </Link>
+                                <Link to="/posts/addPost"> Dodaj nowy post </Link>
                             </div>
-
                         </>
                         : null}
 
@@ -102,10 +84,13 @@ function ProfileDropdownMenu(props) {
             </Menu.Item>
             <Menu.Divider/>
             <Menu.Item key="profile" className="dropdown-item">
-                <Link to={`/my-profile`}>Profile</Link>
+                <Link to={`/my-profile`}>Twoje konto</Link>
+            </Menu.Item>
+            <Menu.Item key="profile-edition" className="dropdown-item">
+                <Link to={`/accounts/editUser`}>Edycja konta</Link>
             </Menu.Item>
             <Menu.Item key="logout" className="dropdown-item">
-                Logout
+                Wyloguj
             </Menu.Item>
         </Menu>
     );
