@@ -11,7 +11,6 @@ export default class EditUser extends Component {
         super(props);
         this.state = {
 
-            id: null,
             username: null,
             firstName: "",
             lastName: "",
@@ -28,7 +27,6 @@ export default class EditUser extends Component {
             }).finally(() => {
             this.setState({
 
-                id: user.id,
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
@@ -52,7 +50,7 @@ export default class EditUser extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const editUserJson = {
-            "accountId": this.state.id,
+            "username": this.state.username,
             "firstName": this.state.firstName,
             "lastName": this.state.lastName,
             "email" : this.state.email
