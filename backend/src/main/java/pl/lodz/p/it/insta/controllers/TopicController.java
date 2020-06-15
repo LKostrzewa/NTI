@@ -1,16 +1,14 @@
 package pl.lodz.p.it.insta.controllers;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.lodz.p.it.insta.dtos.EditForumPostDto;
-import pl.lodz.p.it.insta.dtos.EditTopicDto;
-import pl.lodz.p.it.insta.dtos.NewForumPostDto;
-import pl.lodz.p.it.insta.dtos.NewTopicDto;
-import pl.lodz.p.it.insta.entities.Topic;
+import pl.lodz.p.it.insta.dtos.*;
 import pl.lodz.p.it.insta.services.ForumPostService;
 import pl.lodz.p.it.insta.services.TopicService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/forum")
@@ -18,21 +16,26 @@ public class TopicController {
 
     private final TopicService topicService;
     private final ForumPostService forumPostService;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public TopicController(TopicService topicService, ForumPostService forumPostService) {
+    public TopicController(TopicService topicService, ForumPostService forumPostService, ModelMapper modelMapper) {
         this.topicService = topicService;
         this.forumPostService = forumPostService;
+        this.modelMapper = modelMapper;
     }
 
+
     @GetMapping(produces = "application/json")
-    public List<Topic> getAll() {
-        return topicService.getAll();
+    public List<TopicDto> getAll() {
+        return topicService.getAll().stream()
+                .map(t -> modelMapper.map(t, TopicDto.class))
+                .collect(Collectors.toList());
     }
 
     @GetMapping(value = "/topic/{id}", produces = "application/json")
-    public Topic getTopic(@PathVariable Long id) {
-        return topicService.getTopic(id);
+    public TopicDto getTopic(@PathVariable Long id) {
+        return modelMapper.map(topicService.getTopic(id), TopicDto.class);
     }
 
     @PostMapping("/addTopic")
@@ -67,4 +70,3 @@ public class TopicController {
         forumPostService.updateForumPost(editForumPostDto.getPostId(), editForumPostDto.getContent());
     }
 }
-
