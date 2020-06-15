@@ -51,7 +51,8 @@ public class TopicServiceTest {
         Assert.assertEquals(topicService.getAll().size(), 3);
         Assert.assertEquals(topic.getTitle(), "Testowy temat");
         Assert.assertEquals(topic.getAccount().getUsername(), "ObiKenobi14");
-        Assert.assertEquals(topic.getAddDate().getMinute(), LocalDateTime.now().getMinute());
+        Assert.assertTrue(topic.getAddDate().isBefore(LocalDateTime.now().plusMinutes(1))
+                && topic.getAddDate().isAfter(LocalDateTime.now().minusMinutes(1)));
         Assert.assertTrue(topic.getForumPosts().isEmpty());
 
         topicService.deleteTopic(topic.getId());

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,19 +25,32 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser(username = "ObiKenobi14", password = "Duch123")
 public class PostControllerTest {
 
-    private final Gson gson = new Gson();
     @Autowired
     private MockMvc mvc;
 
+    private final Gson gson = new Gson();
+
     @Test
     public void getAllTest() throws Exception {
-        mvc.perform(MockMvcRequestBuilders
+        mvc.perform( MockMvcRequestBuilders
                 .get("/posts")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(9)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].description", is("Pierwszy raz na murze, ale wysoko")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[4].account.username", is("ObiKenobi14")));
+                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(10)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[2].description", is("Się jara dzieciaku he he...")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[5].account.username", is("ObiKenobi14")));
+    }
+
+
+    @Test
+    public void addTest() throws Exception {
+        MockMultipartFile file = new MockMultipartFile("imageFile", "test.png", MediaType.IMAGE_PNG_VALUE, "<<data>>".getBytes());
+
+        mvc.perform(MockMvcRequestBuilders
+                .multipart("/posts/addPost")
+                .file(file)
+                .param("description", "Testowy post"))
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -47,7 +61,7 @@ public class PostControllerTest {
                 .content(gson.toJson(new NewCommentDto(1, "Testowy komentarz"))))
                 .andExpect(status().isOk());
 
-        mvc.perform(MockMvcRequestBuilders
+        mvc.perform( MockMvcRequestBuilders
                 .get("/posts")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -60,7 +74,7 @@ public class PostControllerTest {
         mvc.perform(MockMvcRequestBuilders
                 .post("/posts/addCommentToPost")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(gson.toJson(new NewCommentDto(10, "Testowy komentarz"))))
+                .content(gson.toJson(new NewCommentDto(20, "Testowy komentarz"))))
                 .andExpect(status().is(404));
     }
 
@@ -71,17 +85,17 @@ public class PostControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        mvc.perform(MockMvcRequestBuilders
+        mvc.perform( MockMvcRequestBuilders
                 .get("/posts")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(8)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(9)));
     }
 
     @Test
     public void deleteWrongTest() throws Exception {
         mvc.perform(MockMvcRequestBuilders
-                .delete("/posts/post/10")
+                .delete("/posts/post/20")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(404));
     }
@@ -93,7 +107,7 @@ public class PostControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        mvc.perform(MockMvcRequestBuilders
+        mvc.perform( MockMvcRequestBuilders
                 .get("/posts")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

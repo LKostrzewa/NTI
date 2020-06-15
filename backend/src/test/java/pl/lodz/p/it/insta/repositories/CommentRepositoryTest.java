@@ -11,6 +11,7 @@ import pl.lodz.p.it.insta.entities.Comment;
 
 import javax.validation.ConstraintViolationException;
 
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class CommentRepositoryTest {
@@ -18,7 +19,8 @@ public class CommentRepositoryTest {
     @Autowired
     private CommentRepository commentRepository;
 
-    @Test
+
+    @Test(expected = ConstraintViolationException.class)
     public void addCommentToPost() {
         Comment comment = new Comment();
         comment.setContent("content");

@@ -13,6 +13,8 @@ import pl.lodz.p.it.insta.entities.Comment;
 import pl.lodz.p.it.insta.entities.Post;
 import pl.lodz.p.it.insta.exceptions.ResourceNotFoundException;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -48,7 +50,8 @@ public class PostServiceTest {
         Assert.assertEquals(comment.getContent(), "Komentarz testowy");
         Assert.assertEquals(comments.size(), 4);
         Assert.assertEquals(comment.getAccount().getUsername(), "ObiKenobi14");
-        Assert.assertEquals(comment.getAddDate().getMinute(), LocalDateTime.now().getMinute());
+        Assert.assertTrue(comment.getAddDate().isBefore(LocalDateTime.now().plusMinutes(1))
+                && comment.getAddDate().isAfter(LocalDateTime.now().minusMinutes(1)));
         Assert.assertEquals(comment.getPost().getDescription(), "Złapałem jakąś dzikuske, mówi że nazywa się Ygritte");
     }
 
@@ -65,5 +68,25 @@ public class PostServiceTest {
     @Test(expected = ResourceNotFoundException.class)
     public void deleteCommentExceptionTest() {
         postService.deletePostComment(72);
+    }
+
+    @Test
+    public void addPost() throws IOException {
+        InputStream is = getClass().getResourceAsStream("/test.jpg");
+        byte[] bytes = is.readAllBytes();
+
+        postService.addPost("Testowy post", bytes);
+        Post post = postService.getAll().get(0);
+
+        Assert.assertEquals(postService.getAll().size(), 10);
+        Assert.assertEquals(post.getAccount().getUsername(), "ObiKenobi14");
+        Assert.assertEquals(post.getDescription(), "Testowy post");
+        Assert.assertEquals(post.getLob(), bytes);
+        Assert.assertTrue(post.getAddDate().isBefore(LocalDateTime.now().plusMinutes(1))
+                && post.getAddDate().isAfter(LocalDateTime.now().minusMinutes(1)));
+        Assert.assertTrue(post.getComments().isEmpty());
+
+        postService.deletePost(post.getId());
+        Assert.assertEquals(postService.getAll().size(), 9);
     }
 }

@@ -38,7 +38,8 @@ public class ForumPostServiceTest {
         Assert.assertEquals(forumPosts.size(), 5);
         Assert.assertEquals(post.getContent(), "Testowy post");
         Assert.assertEquals(post.getAccount().getUsername(), "ObiKenobi14");
-        Assert.assertEquals(post.getAddDate().getMinute(), LocalDateTime.now().getMinute());
+        Assert.assertTrue(post.getAddDate().isBefore(LocalDateTime.now().plusMinutes(1))
+                && post.getAddDate().isAfter(LocalDateTime.now().minusMinutes(1)));
     }
 
     @Test(expected = ResourceNotFoundException.class)

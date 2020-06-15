@@ -1,6 +1,6 @@
 package pl.lodz.p.it.insta.controllers;
 
-
+import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import pl.lodz.p.it.insta.dtos.EditTopicDto;
+import pl.lodz.p.it.insta.dtos.EditUserDto;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -72,5 +74,24 @@ public class AccountControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .param("email", "vader@02.pl"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.available", is(false)));
+    }
+
+    @Test
+    public void editUserTest() throws Exception {
+        Gson gson = new Gson();
+
+        mvc.perform(MockMvcRequestBuilders
+                .put("/accounts/editUser")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(new EditUserDto("Jan", "Pawlak", "PawlakJan@wp.pl"))))
+                .andExpect(status().isOk());
+
+        mvc.perform(MockMvcRequestBuilders
+                .get("/accounts/ObiKenobi14")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName", is("Jan")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName", is("Pawlak")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.email", is("PawlakJan@wp.pl")));
     }
 }
