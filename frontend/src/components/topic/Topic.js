@@ -31,6 +31,10 @@ export class Topic extends Component {
 
     deleteForumTopic = () => {
         deleteTopic(this.state.id)
+            .catch(e => {
+                console.log(e);
+                if(e.status===404)
+                    alert("Coś poszło nie tak")})
             .finally(() => {
                 window.location.reload()
             });
@@ -59,6 +63,10 @@ export class Topic extends Component {
             "topicId": this.state.id
         };
         editTopic(editPostJson)
+            .catch(e => {
+                console.log(e);
+                if(e.status===404)
+                    alert("Coś poszło nie tak")})
             .finally(() => {
                 window.location.reload()
             });
